@@ -1,98 +1,137 @@
-:root{--ivory:#F6F1E7;--forest:#2E4A40;--midnight:#1B263B;--shadow:0 2px 12px rgba(0,0,0,.05)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--ivory);color:var(--forest);font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap");
+
+/* Farben */
+:root {
+  --ivory: #F6F1E7;
+  --forest: #2E4A40;
+  --midnight: #1B263B;
+  --paper: #ffffff;
+  --shadow: 0 2px 12px rgba(0, 0, 0, .05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--ivory);
+  color: var(--forest);
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.65;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 24px; }
 
 /* Topbar */
-.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid rgba(27,38,59,.1);background:var(--ivory);box-shadow:var(--shadow)}
-.topbar h1{margin:0;font-weight:700}
-
-/* Menü */
-.nav-left{position:relative}
-.menu-button{background:none;border:none;cursor:pointer;color:var(--forest);font-weight:700;padding:8px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px}
-.menu-button:hover{background:rgba(27,38,59,.06);color:var(--midnight)}
-.menu-button .chev{transition:transform .2s}
-.menu-button.rot .chev{transform:rotate(180deg)}
-.menu-panel{position:absolute;left:24px;top:56px;display:none;flex-direction:column;gap:2px;min-width:200px;padding:8px;background:var(--ivory);border:1px solid rgba(27,38,59,.12);border-radius:12px;box-shadow:var(--shadow)}
-.menu-panel a{padding:10px 12px;border-radius:8px;color:var(--forest);text-decoration:none;font-weight:600}
-.menu-panel a:hover{background:rgba(27,38,59,.06);color:var(--midnight)}
-.menu-panel.open{display:flex;animation:dropdownFade .18s ease}
-@keyframes dropdownFade{from{opacity:0;transform:translateY(-4px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-.footer{padding:28px 0 64px;opacity:.85;text-align:center}
-brand {
-  text-align: center;
+.topbar {
+  background: var(--ivory);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(27,38,59,.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .brand h1 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  color: var(--midnight);
-  font-size: clamp(28px, 4vw, 44px);
-  margin: 0;
-  letter-spacing: 0.5px;
+  color: var(--forest);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 40px);
 }
 
 .motto {
   font-style: italic;
   font-size: 16px;
-  color: var(--forest);
-  margin: 4px 0 0;
-  opacity: 0.9;
+  color: var(--midnight);
+  text-align: center;
 }
 
-.nav-right .insta-link {
+/* Menü */
+.menu-button {
+  background: none;
+  border: none;
+  font: 600 16px "Montserrat", sans-serif;
+  color: var(--forest);
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  color: var(--midnight);
+}
+
+.menu-panel {
+  display: none;
+  flex-direction: column;
+  background: var(--paper);
+  position: absolute;
+  top: 60px;
+  left: 16px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.menu-panel.open { display: flex; }
+
+.menu-panel a {
+  padding: 12px 20px;
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(27,38,59,.1);
+}
+
+.menu-panel a:hover {
+  background: var(--forest);
+  color: var(--ivory);
+}
+
+/* Instagram */
+.insta-link {
   display: flex;
   align-items: center;
   gap: 6px;
   color: var(--forest);
-  font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
 }
 
-.nav-right .insta-link:hover {
+.insta-link:hover {
   color: var(--midnight);
-}/* Topbar als Grid: links Menü – Mitte Brand – rechts Instagram */
-.topbar{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  justify-items: start;         /* links/rechts normal ausrichten */
-  background: var(--ivory);
-  padding: 14px 24px;
-  border-bottom: 1px solid rgba(27,38,59,.1);
-  position: sticky; top: 0; z-index: 20;
-  box-shadow: var(--shadow);
 }
 
-/* Brand zentriert in der mittleren Spalte */
-.brand{
-  grid-column: 2;
-  justify-self: center;         /* exakt mittig, unabhängig von links/rechts */
-  text-align: center;
+/* Abschnitte */
+section {
+  padding: 40px 0;
+  border-top: 1px solid rgba(27,38,59,.08);
 }
 
-/* Titel: Waldgrün (überschreibt ältere Regeln) */
-.brand h1{
+h2 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  color: var(--forest);         /* <-- grün */
-  font-size: clamp(28px, 4vw, 44px);
-  margin: 0;
-  letter-spacing: .5px;
+  font-size: 24px;
+  color: var(--midnight);
+  margin-bottom: 8px;
 }
 
-/* Motto mittig unter dem Titel */
-.motto{
-  margin: 4px 0 0;
-  font-style: italic;
-  font-size: 16px;
-  color: var(--forest);
-  opacity: .9;
+p { margin-bottom: 12px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 2px solid var(--midnight);
+  color: var(--midnight);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.btn:hover {
+  background: var(--midnight);
+  color: var(--ivory);
+}
+
+.footer {
   text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  padding: 40px 0;
 }
-
-/* Links/Rechts-Spalten in der Grid-Topbar */
-.nav-left{ grid-column: 1; position: relative; }
-.nav-right{ grid-column: 3; justify-self: end; }
