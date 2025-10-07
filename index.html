@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>untermnordlicht – Ruhe. Natur. Freiheit. Klarheit.</title>
+  <meta name="description" content="Echte Momente aus Finnland – Fotografien, Geschichten und Prints. Unter dem Nordlicht: Ruhe, Natur, Freiheit, Klarheit." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#F6F1E7;       /* Elfenbeinweiß */
+      --forest:#2E4A40;      /* Nordwaldgrün */
+      --midnight:#1B263B;    /* Mitternachtsblau */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--ivory); color:var(--forest);
+      font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:24px}
+    header{padding:64px 0 24px; text-align:center}
+    h1{
+      font-family:"Montserrat", sans-serif; font-weight:600; letter-spacing:0.5px;
+      margin:0 0 8px; font-size:clamp(28px, 4vw, 44px); color:var(--midnight);
+    }
+    .tagline{
+      font-style:italic; opacity:.9; margin-bottom:8px;
+      font-size:clamp(16px, 2.2vw, 20px);
+    }
+    .intro{opacity:.9; max-width:760px; margin:0 auto 12px;}
+    section{padding:36px 0; border-top:1px solid rgba(27,38,59,.08);}
+    h2{
+      font-family:"Montserrat", sans-serif; font-size:clamp(22px, 3vw, 28px);
+      margin:0 0 12px; color:var(--midnight);
+    }
+    p{margin:0 0 12px}
+    .btn{
+      display:inline-block; padding:12px 18px; border:2px solid var(--midnight);
+      color:var(--midnight); text-decoration:none; border-radius:8px; font-weight:600;
+      transition:.2s ease; margin-top:8px;
+    }
+    .btn:hover{background:var(--midnight); color:var(--ivory)}
+    .grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0 0;
+    }
+    .card{
+      background:#fff; border-radius:12px; overflow:hidden; border:1px solid rgba(27,38,59,.08);
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+    }
+    .card img{width:100%; height:180px; object-fit:cover; display:block}
+    .center{text-align:center}
+    footer{padding:40px 0 80px; text-align:center; opacity:.9}
+    .small{font-size:14px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} .card img{height:160px} }
+    @media (max-width:600px){ .grid{grid-template-columns:1fr} header{padding:48px 0 8px} }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <h1>untermnordlicht</h1>
+    <div class="tagline">Ruhe. Natur. Freiheit. Klarheit.</div>
+    <p class="intro">Ein Leben zwischen Wald, Licht und Stille – inspiriert vom Norden.</p>
+  </header>
+
+  <main class="wrap">
+    <section id="fotos">
+      <h2>Echte Momente aus Finnland</h2>
+      <p>Unsere Fotografien erzählen vom stillen Licht des Nordens – von Seen, Wäldern und der Magie, wenn der Tag schweigt.</p>
+      <!-- Ersetze die Platzhalter-Bilder durch deine Dateien (z.B. /images/see.jpg) -->
+      <div class="grid">
+        <div class="card"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="See & Wald"></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" alt="Wald & Licht"></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop" alt="Himmel & Stille"></div>
+      </div>
+      <p class="center"><a class="btn" href="#" target="_blank" rel="noopener">Prints ansehen</a></p>
+    </section>
+
+    <section id="buecher">
+      <h2>Geschichten & Bücher</h2>
+      <p>Gedanken, die im Winter wachsen. Texte über Einfachheit, Familie und den Mut, weniger zu wollen.</p>
+      <p class="center"><a class="btn" href="#" target="_blank" rel="noopener">Zum eBook</a></p>
+    </section>
+
+    <section id="prints">
+      <h2>Design & Prints</h2>
+      <p>Schlichte Motive. Klare Linien. Vom Polarlicht inspiriert – als Poster, Shirt oder Karte.</p>
+      <p class="center"><a class="btn" href="#" target="_blank" rel="noopener">Kollektion öffnen</a></p>
+    </section>
+
+    <section id="kontakt" class="center">
+      <h2>Kontakt</h2>
+      <p><a class="btn" href="mailto:hei@untermnordlicht.de">hei@untermnordlicht.de</a></p>
+      <p class="small">Folge uns: <a href="https://instagram.com/untermnordlicht" target="_blank" rel="noopener">Instagram</a></p>
+      <p class="small" style="margin-top:12px; opacity:.8">„Wir zeigen nicht uns, sondern das, was wir fühlen.“</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap small">© <span id="y"></span> untermnordlicht</div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
