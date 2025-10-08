@@ -19,11 +19,14 @@ if (btn && panel) {
     document.body.classList.toggle('no-scroll', willOpen);
   });
 
+  // Links im Panel schließen
   panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
+  // Klick außerhalb schließt
   document.addEventListener('click', (e) => {
     if (!panel.contains(e.target) && !btn.contains(e.target)) closeMenu();
   });
 
+  // ESC schließt
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 }

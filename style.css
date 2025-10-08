@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap");
 
+/* Farben */
 :root{
-  --ivory:#F6F1E7;
-  --forest:#2E4A40;
-  --midnight:#1B263B;
+  --ivory:#F6F1E7;      /* Elfenbeinweiß */
+  --forest:#2E4A40;     /* Nordwaldgrün */
+  --midnight:#1B263B;   /* Mitternachtsblau */
   --paper:#ffffff;
   --shadow:0 2px 12px rgba(0,0,0,.06);
 }
@@ -20,7 +21,7 @@ body{
 .wrap{ max-width:980px; margin:0 auto; padding:24px; }
 h1,h2{ font-family:"Montserrat",sans-serif; }
 
-/* Topbar */
+/* ===== TOPBAR ===== */
 .topbar{
   background:var(--ivory);
   position:sticky; top:0; z-index:50;
@@ -76,46 +77,69 @@ h1{ margin:0; color:var(--forest); font-weight:600; font-size:clamp(30px,4vw,42p
 .icon-badge:active{ transform:scale(.96); }
 .social-link:hover .icon-badge{ background:#244237; }
 
+/* ===== HERO ===== */
+/* Bild-URL hier anpassen: für GitHub z.B. https://untermnordlicht.de/hero.jpg */
+.hero{
+  position:relative;
+  height:90vh;
+  background:
+    linear-gradient(to bottom, rgba(46,74,64,.25), rgba(246,241,231,.95)),
+    url("https://untermnordlicht.de/hero.jpg") center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+}
+.hero-content{
+  background:rgba(255,255,255,.55);
+  padding:20px 32px;
+  border-radius:12px;
+  box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+.hero h2{
+  margin:0 0 10px;
+  font-size:clamp(28px,5vw,42px);
+  color:var(--midnight);
+}
+.hero p{ margin:0; font-size:18px; font-style:italic; color:var(--forest); }
+
+/* ===== CONTENT ===== */
 section{ padding:40px 0; border-top:1px solid rgba(27,38,59,.08); }
 h2{ color:var(--midnight); font-size:clamp(22px,3vw,28px); margin:0 0 10px; }
 p{ margin:0 0 12px; }
-
 .btn{ display:inline-block; padding:10px 16px; border:2px solid var(--midnight); color:var(--midnight);
       border-radius:10px; text-decoration:none; font-weight:600; transition:.2s ease; }
 .btn:hover{ background:var(--midnight); color:var(--ivory); }
 
 .footer{ text-align:center; font-size:14px; opacity:.85; padding:36px 0 60px; }
 
-/* ===== v0.6 – Mobile-Topbar-Finish ===== */
+/* ===== Mobile-Topbar-Finish ===== */
 @media (max-width: 720px) {
   .topbar{
-    display: grid;
-    grid-template-columns: 44px 1fr 44px;
-    align-items: center;
-    padding: 8px 10px;
-    gap: 6px;
+    display:grid;
+    grid-template-columns:44px 1fr 44px;
+    align-items:center;
+    padding:8px 10px;
+    gap:6px;
   }
   .nav-left{ grid-column:1; justify-self:start; }
   .brand{ grid-column:2; justify-self:center; text-align:center; }
   .socials{ grid-column:3; justify-self:end; }
 
-  .brand h1{ font-size: 24px; line-height: 1.15; }
-  .motto{ font-size: 12.5px; margin-top: 2px; opacity:.9; }
+  .brand h1{ font-size:24px; line-height:1.15; }
+  .motto{ font-size:12.5px; margin-top:2px; opacity:.9; }
 
-  .menu-button{ font-size: 15.5px; padding: 6px 8px; border-radius: 8px; }
-  .menu-panel{ top: calc(100% + 6px); left: 0; min-width: 180px; padding: 8px; border-radius: 10px; }
-  .menu-panel a{ padding: 10px 12px; border-radius: 8px; font-weight: 600; }
+  .menu-button{ font-size:15.5px; padding:6px 8px; }
+  .menu-panel{ top:calc(100% + 6px); left:0; min-width:180px; padding:8px; border-radius:10px; }
+  .menu-panel a{ padding:10px 12px; border-radius:8px; font-weight:600; }
 
-  .socials{ gap: 8px; }
-  .icon-badge{ width: 34px; height: 34px; }
-  .icon-badge img{ width: 16px; height: 16px; }
+  .socials{ gap:8px; }
+  .icon-badge{ width:34px; height:34px; }
+  .icon-badge img{ width:16px; height:16px; }
 
-  .wrap{ padding-left: 16px; padding-right: 16px; }
+  .wrap{ padding-left:16px; padding-right:16px; }
 }
 
-@media (max-width: 360px){
-  .brand h1{ font-size: 22px; }
-  .motto{ font-size: 12px; }
-  .icon-badge{ width: 32px; height: 32px; }
-  .icon-badge img{ width: 15px; height: 15px; }
+@media (max-width:360px){
+  .brand h1{ font-size:22px; }
+  .motto{ font-size:12px; }
+  .icon-badge{ width:32px; height:32px; }
+  .icon-badge img{ width:15px; height:15px; }
 }
