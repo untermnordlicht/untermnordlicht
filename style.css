@@ -169,3 +169,62 @@ img{ max-width:100%; height:auto; -webkit-user-drag:none; user-select:none; }  /
 
 /* Wenn Menü offen: Hintergrund nicht scrollen */
 body.no-scroll{ overflow:hidden; }
+/* --- Feintuning für Topbar & Icons --- */
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: 600 17px "Montserrat", sans-serif; /* minimal größer */
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.menu-button:hover {
+  color: var(--midnight);
+  background: rgba(27,38,59,.06);
+}
+
+.menu-button .chev {
+  font-size: 0.9em;
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+
+.menu-button.rot .chev {
+  transform: rotate(180deg);
+}
+
+/* Social-Icons rechts */
+.socials {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;      /* etwas größer */
+  height: 38px;
+  border-radius: 10px;
+  color: var(--forest); /* gleiche Farbe wie Menü */
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(27,38,59,.08);
+  color: var(--midnight);
+}
+
+.icon-btn svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 1.4;
+}
