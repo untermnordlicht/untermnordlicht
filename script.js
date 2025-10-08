@@ -5,6 +5,7 @@ const panel = document.getElementById('menu-panel');
 if (btn && panel) {
   const closeMenu = () => {
     panel.classList.remove('open');
+    btn.classList.remove('rot');
     btn.setAttribute('aria-expanded','false');
     document.body.classList.remove('no-scroll');
   };
@@ -13,11 +14,12 @@ if (btn && panel) {
     e.stopPropagation();
     const willOpen = !panel.classList.contains('open');
     panel.classList.toggle('open', willOpen);
+    btn.classList.toggle('rot', willOpen);
     btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     document.body.classList.toggle('no-scroll', willOpen);
   });
 
-  // Link-Klick schließt Menü
+  // Links im Panel schließen
   panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   // Klick außerhalb

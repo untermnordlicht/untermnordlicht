@@ -1,230 +1,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap");
 
-/* Farben */
-:root {
-  --ivory: #F6F1E7;
-  --forest: #2E4A40;
-  --midnight: #1B263B;
-  --paper: #ffffff;
-  --shadow: 0 2px 12px rgba(0, 0, 0, .05);
+:root{
+  --ivory:#F6F1E7;      /* Elfenbeinweiß */
+  --forest:#2E4A40;     /* Nordwaldgrün */
+  --midnight:#1B263B;   /* Mitternachtsblau */
+  --paper:#ffffff;
+  --shadow:0 2px 12px rgba(0,0,0,.06);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--ivory);
-  color: var(--forest);
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.65;
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--forest);
+  font-family:"Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.65;
+  overflow-x:hidden; /* kein horizontales Wackeln */
 }
 
-.wrap { max-width: 960px; margin: 0 auto; padding: 24px; }
+.wrap{ max-width:980px; margin:0 auto; padding:24px; }
+h1,h2{ font-family:"Montserrat",sans-serif; }
 
-/* Topbar */
-.topbar {
-  background: var(--ivory);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  border-bottom: 1px solid rgba(27,38,59,.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* ===== TOPBAR ===== */
+.topbar{
+  background:var(--ivory);
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 18px;
+  border-bottom:1px solid rgba(27,38,59,.10);
 }
 
-.brand h1 {
-  font-family: "Montserrat", sans-serif;
-  color: var(--forest);
-  font-weight: 600;
-  font-size: clamp(28px, 4vw, 40px);
+.brand{ text-align:center; }
+h1{ margin:0; color:var(--forest); font-weight:600; font-size:clamp(30px,4vw,42px); letter-spacing:.3px; }
+.motto{ margin:3px 0 0; font-style:italic; opacity:.9; font-size:15px; }
+
+/* Menü-Button */
+.nav-left{ position:relative; }
+.menu-button{
+  background:none; border:none; cursor:pointer;
+  font:600 17px "Montserrat",sans-serif;
+  color:var(--forest);
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 12px; border-radius:8px;
+  transition:background .2s ease, color .2s ease;
 }
+.menu-button:hover{ background:rgba(27,38,59,.06); color:var(--midnight); }
+.menu-button .chev{ font-size:.9em; transition:transform .25s ease; transform-origin:center; }
+.menu-button.rot .chev{ transform:rotate(180deg); }
 
-.motto {
-  font-style: italic;
-  font-size: 16px;
-  color: var(--midnight);
-  text-align: center;
-}
-
-/* Menü */
-.menu-button {
-  background: none;
-  border: none;
-  font: 600 16px "Montserrat", sans-serif;
-  color: var(--forest);
-  cursor: pointer;
-}
-
-.menu-button:hover {
-  color: var(--midnight);
-}
-
-.menu-panel {
-  display: none;
-  flex-direction: column;
-  background: var(--paper);
-  position: absolute;
-  top: 60px;
-  left: 16px;
-  box-shadow: var(--shadow);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.menu-panel.open { display: flex; }
-
-.menu-panel a {
-  padding: 12px 20px;
-  color: var(--forest);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(27,38,59,.1);
-}
-
-.menu-panel a:hover {
-  background: var(--forest);
-  color: var(--ivory);
-}
-
-/* Instagram */
-.insta-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--forest);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.insta-link:hover {
-  color: var(--midnight);
-}
-
-/* Abschnitte */
-section {
-  padding: 40px 0;
-  border-top: 1px solid rgba(27,38,59,.08);
-}
-
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 24px;
-  color: var(--midnight);
-  margin-bottom: 8px;
-}
-
-p { margin-bottom: 12px; }
-
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border: 2px solid var(--midnight);
-  color: var(--midnight);
-  border-radius: 10px;
-  text-decoration: none;
-  transition: .2s ease;
-}
-
-.btn:hover {
-  background: var(--midnight);
-  color: var(--ivory);
-}
-
-.footer {
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.8;
-  padding: 40px 0;
-}
-/* Panel sicher ÜBER Content und Topbar anzeigen */
-.topbar { position: sticky; top: 0; z-index: 50; }
-.nav-left { position: relative; }
+/* Dropdown-Panel */
 .menu-panel{
-  position: absolute;
-  left: 0;
-  top: calc(100% + 6px);   /* direkt unter dem Button */
-  display: none;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 200px;
-  padding: 8px;
-  background: var(--ivory);
-  border: 1px solid rgba(27,38,59,.12);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  z-index: 999;            /* über allem */
+  position:absolute; left:0; top:calc(100% + 8px);
+  display:none; flex-direction:column; gap:6px;
+  min-width:200px; padding:10px;
+  background:var(--ivory);
+  border:1px solid rgba(27,38,59,.12);
+  border-radius:12px; box-shadow:var(--shadow);
+  z-index:999;
 }
-.menu-panel.open{ display:flex; animation: dropdownFade .18s ease; }
-@keyframes dropdownFade{ from{opacity:0;transform:translateY(-4px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)}}
-.menu-panel a{ padding:10px 12px; border-radius:8px; text-decoration:none; color:var(--forest); font-weight:500; }
-.menu-panel a:hover{ background:rgba(27,38,59,.06); color:var(--midnight); }
-
-/* Social-Icons rechts ohne Text */
-.socials{ display:flex; gap:10px; align-items:center; }
-.icon-btn{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:8px; color:var(--forest); text-decoration:none; transition:background .2s ease, color .2s ease; }
-.icon-btn:hover{ background:rgba(27,38,59,.06); color:var(--midnight); }
-
-/* Sauberes Verhalten auf Mobile */
-body{ overflow-x:hidden; }                         /* kein horizontales Verschieben */
-img{ max-width:100%; height:auto; -webkit-user-drag:none; user-select:none; }  /* Bilder nicht wegziehen */
-
-/* Wenn Menü offen: Hintergrund nicht scrollen */
-body.no-scroll{ overflow:hidden; }
-/* --- Feintuning für Topbar & Icons --- */
-.menu-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: 600 17px "Montserrat", sans-serif; /* minimal größer */
-  color: var(--forest);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: background .2s ease, color .2s ease;
+.menu-panel.open{ display:flex; animation:dropdownFade .18s ease; }
+@keyframes dropdownFade{ from{opacity:0; transform:translateY(-4px) scale(.99)} to{opacity:1; transform:translateY(0) scale(1)} }
+.menu-panel a{
+  text-decoration:none; color:var(--forest); font-weight:600;
+  padding:12px 14px; border-radius:10px; transition:background .2s ease, color .2s ease;
 }
+.menu-panel a:hover, .menu-panel a:focus{ background:var(--forest); color:var(--ivory); }
 
-.menu-button:hover {
-  color: var(--midnight);
-  background: rgba(27,38,59,.06);
+/* Socials */
+.socials{ display:flex; gap:12px; align-items:center; }
+.social-link{ display:inline-flex; align-items:center; text-decoration:none; }
+.icon-badge{
+  width:38px; height:38px; border-radius:50%;
+  background:var(--forest);
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:background .25s ease, transform .08s ease;
 }
+.icon-badge img{ width:18px; height:18px; display:block; }
+.icon-badge:active{ transform:scale(.96); }
+.social-link:hover .icon-badge{ background: #244237; } /* etwas dunkler */
 
-.menu-button .chev {
-  font-size: 0.9em;
-  transform-origin: center;
-  transition: transform .25s ease;
-}
+section{ padding:40px 0; border-top:1px solid rgba(27,38,59,.08); }
+h2{ color:var(--midnight); font-size:clamp(22px,3vw,28px); margin:0 0 10px; }
+p{ margin:0 0 12px; }
 
-.menu-button.rot .chev {
-  transform: rotate(180deg);
-}
+.btn{ display:inline-block; padding:10px 16px; border:2px solid var(--midnight); color:var(--midnight);
+      border-radius:10px; text-decoration:none; font-weight:600; transition:.2s ease; }
+.btn:hover{ background:var(--midnight); color:var(--ivory); }
 
-/* Social-Icons rechts */
-.socials {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
+.footer{ text-align:center; font-size:14px; opacity:.85; padding:36px 0 60px; }
 
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;      /* etwas größer */
-  height: 38px;
-  border-radius: 10px;
-  color: var(--forest); /* gleiche Farbe wie Menü */
-  text-decoration: none;
-  transition: background .25s ease, color .25s ease;
-}
-
-.icon-btn:hover {
-  background: rgba(27,38,59,.08);
-  color: var(--midnight);
-}
-
-.icon-btn svg {
-  width: 26px;
-  height: 26px;
-  stroke-width: 1.4;
+/* ===== v0.5 mobile Feinschliff ===== */
+@media (max-width:720px){
+  .topbar{ padding:10px 14px; }
+  .menu-button{ font-size:16px; padding:8px 10px; }
+  .icon-badge{ width:34px; height:34px; }
+  .icon-badge img{ width:16px; height:16px; }
+  .brand h1{ font-size:30px; }
+  .motto{ font-size:14px; }
 }
