@@ -1,29 +1,30 @@
-// Dropdown-Menü Logik
-const btn = document.querySelector('.menu-button');
+// Dropdown-Menü + Scroll-Lock
+const btn   = document.querySelector('.menu-button');
 const panel = document.getElementById('menu-panel');
 
 if (btn && panel) {
-  function closeMenu() {
+  const closeMenu = () => {
     panel.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
+    btn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('no-scroll');
+  };
 
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    panel.classList.toggle('open');
-    const isOpen = panel.classList.contains('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const willOpen = !panel.classList.contains('open');
+    panel.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    document.body.classList.toggle('no-scroll', willOpen);
   });
 
-  // Menü schließen, wenn außerhalb geklickt wird
+  // Link-Klick schließt Menü
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Klick außerhalb
   document.addEventListener('click', (e) => {
-    if (!panel.contains(e.target) && !btn.contains(e.target)) {
-      closeMenu();
-    }
+    if (!panel.contains(e.target) && !btn.contains(e.target)) closeMenu();
   });
 
-  // ESC-Taste schließt Menü
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
+  // ESC
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 }

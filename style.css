@@ -135,3 +135,37 @@ p { margin-bottom: 12px; }
   opacity: 0.8;
   padding: 40px 0;
 }
+/* Panel sicher ÜBER Content und Topbar anzeigen */
+.topbar { position: sticky; top: 0; z-index: 50; }
+.nav-left { position: relative; }
+.menu-panel{
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);   /* direkt unter dem Button */
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+  padding: 8px;
+  background: var(--ivory);
+  border: 1px solid rgba(27,38,59,.12);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 999;            /* über allem */
+}
+.menu-panel.open{ display:flex; animation: dropdownFade .18s ease; }
+@keyframes dropdownFade{ from{opacity:0;transform:translateY(-4px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)}}
+.menu-panel a{ padding:10px 12px; border-radius:8px; text-decoration:none; color:var(--forest); font-weight:500; }
+.menu-panel a:hover{ background:rgba(27,38,59,.06); color:var(--midnight); }
+
+/* Social-Icons rechts ohne Text */
+.socials{ display:flex; gap:10px; align-items:center; }
+.icon-btn{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:8px; color:var(--forest); text-decoration:none; transition:background .2s ease, color .2s ease; }
+.icon-btn:hover{ background:rgba(27,38,59,.06); color:var(--midnight); }
+
+/* Sauberes Verhalten auf Mobile */
+body{ overflow-x:hidden; }                         /* kein horizontales Verschieben */
+img{ max-width:100%; height:auto; -webkit-user-drag:none; user-select:none; }  /* Bilder nicht wegziehen */
+
+/* Wenn Menü offen: Hintergrund nicht scrollen */
+body.no-scroll{ overflow:hidden; }
