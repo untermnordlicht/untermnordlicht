@@ -164,3 +164,30 @@ p{ margin:0 0 12px; }
   .icon-badge{ width: 32px; height: 32px; }
   .icon-badge img{ width: 15px; height: 15px; }
 }
+@media (max-width: 720px){
+  /* DEBUG: sichtbar machen, ob Mobile-CSS aktiv ist */
+  body { outline: 2px solid magenta !important; }
+
+  /* deine echten Regeln */
+  .topbar{
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .nav-left{ grid-column:1; justify-self:start; }
+  .brand{ grid-column:2; justify-self:center; text-align:center; }
+  .socials{ grid-column:3; justify-self:end; }
+
+  .brand h1{ font-size:24px; line-height:1.15; }
+  .motto{ font-size:12.5px; margin-top:2px; opacity:.9; }
+
+  .menu-button{ font-size:15.5px; padding:6px 8px; }
+  .menu-panel{ top:calc(100% + 6px); left:0; min-width:180px; padding:8px; border-radius:10px; }
+  .menu-panel a{ padding:10px 12px; border-radius:8px; font-weight:600; }
+
+  .socials{ gap:8px; }
+  .icon-badge{ width:34px; height:34px; }
+  .icon-badge img{ width:16px; height:16px; }
+}
