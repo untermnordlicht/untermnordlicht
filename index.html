@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>untermnordlicht – Ruhe. Natur. Freiheit. Klarheit.</title>
-  <link rel="stylesheet" href="style.css?v=0.7" />
+  <link rel="stylesheet" href="style.css?v=0.8" />
 </head>
 <body>
 
 <!-- TOPBAR -->
 <header class="topbar">
-  <!-- LINKS: Menü-Button + Dropdown -->
   <div class="nav-left">
     <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
       MENÜ <span class="chev">▼</span>
@@ -19,40 +18,67 @@
       <a role="menuitem" href="#fotos">Fotos</a>
       <a role="menuitem" href="#buecher">Bücher</a>
       <a role="menuitem" href="#prints">Prints</a>
+      <a role="menuitem" href="#ueber-uns">Über uns</a>
       <a role="menuitem" href="#kontakt">Kontakt</a>
     </nav>
   </div>
 
-  <!-- MITTE: Brand -->
   <div class="brand">
     <h1>untermnordlicht</h1>
-    <p class="motto">einfach leben, tief fühlen.</p>
+    <p class="motto">einfach leben, tief fühlen</p>
   </div>
 
-  <!-- RECHTS: Socials -->
-  <div class="nav-right socials">
-    <a href="https://instagram.com/untermnordlicht" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
-      <span class="icon-badge">
-        <img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" width="18" height="18" />
-      </span>
-    </a>
-    <a href="https://pinterest.de/untermnordlicht" target="_blank" rel="noopener" aria-label="Pinterest" class="social-link">
-      <span class="icon-badge">
-        <img src="https://cdn.simpleicons.org/pinterest/FFFFFF" alt="Pinterest" width="18" height="18" />
-      </span>
-    </a>
+  <div class="nav-right">
+    <div class="social">
+      <!-- Instagram minimal icon -->
+      <a href="https://instagram.com/untermnordlicht" target="_blank" aria-label="Instagram" class="social-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="currentColor"/>
+          <circle cx="12" cy="12" r="4.2" fill="var(--forest)"/>
+          <circle cx="17" cy="7" r="1.2" fill="var(--forest)"/>
+        </svg>
+      </a>
+      <!-- Pinterest simple badge -->
+      <a href="https://pinterest.com/untermnordlicht" target="_blank" aria-label="Pinterest" class="social-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="currentColor"/>
+          <text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="var(--forest)" font-weight="700">P</text>
+        </svg>
+      </a>
+    </div>
   </div>
 </header>
 
-<!-- HERO mit sanftem Verlauf -->
-<section class="hero">
-  <div class="hero-content">
-    <h2>Ein Leben zwischen Licht und Stille</h2>
-    <p>Ruhe. Natur. Freiheit. Klarheit.</p>
-  </div>
+<!-- HERO (Bild mit sanftem Verlauf + Fade-In) -->
+<section class="hero fade-root">
+  <img src="https://untermnordlicht.de/hero.jpg" alt="Nordisches Licht über See und Wald" class="hero-img fade-item">
+  <div class="hero-overlay"></div>
 </section>
 
-<!-- CONTENT -->
+<!-- ÜBER UNS (mit großem Introbild + Fade-In) -->
+<section id="ueber-uns" class="about-section fade-root">
+  <div class="about-hero fade-item">
+    <img
+      src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/ueber-uns.jpg"
+      alt="Familie in Finnland – untermnordlicht"
+      class="about-hero-img">
+    <div class="overlay"></div>
+    <h2>Über uns</h2>
+  </div>
+
+  <div class="about-content fade-item">
+    <p>Wir sind Flo, Vanessa und unsere zwei Jungs – eine Familie, die das einfache Leben liebt. Manchmal unterwegs im Wohnmobil, manchmal zuhause – immer mit dem Wunsch nach Ruhe, Natur und Echtheit.</p>
+
+    <p><strong>untermnordlicht</strong> steht für ein bewusstes Leben – zwischen Alltag und kleinen Abenteuern. Für warme Tassen Kaffee am Morgen, nasse Kinderstiefel vor der Tür, frische Luft im Gesicht und Momente, die bleiben.</p>
+
+    <p><em>Finnland ist für uns mehr als ein Reiseziel – es ist ein Gefühl. Ein Stück Heimat im Herzen, das uns lehrt: Glück braucht keine Eile.</em></p>
+
+    <p>Hier findest du Geschichten aus unserem Familienalltag, kleine Ideen für ein achtsames Leben, Tipps rund ums Wohnmobil und die Freude am Einfachen.</p>
+  </div>
+
+  <p class="about-quote fade-item">„Manchmal laut, oft leise, immer echt.“</p>
+</section>
+
 <main class="wrap">
   <section id="fotos">
     <h2>Fotos</h2>
@@ -77,7 +103,7 @@
 
 <footer class="wrap footer small">© <span id="y"></span> untermnordlicht</footer>
 
-<script src="script.js?v=0.7"></script>
+<script src="script.js?v=0.8"></script>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
