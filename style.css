@@ -359,3 +359,41 @@ p{ margin:0 0 12px; }
   font-size: 12px;
   opacity: 0.5;
 }
+/* v0.8.6 – Bildausschnitte feinjustiert */
+
+/* 1) Über-uns – Desktop mittig, mit etwas mehr Tiefe */
+@media (min-width: 721px){
+  .about-hero{
+    height: 520px;              /* zuvor ggf. flacher – jetzt mehr Höhe */
+  }
+  .about-hero img{
+    object-position: 50% 50%;   /* exakt Mitte */
+  }
+}
+
+/* 2) Hero – Mobile „weiter raus“ + sanfterer Verlauf */
+@media (max-width: 720px){
+  .hero{
+    height: 82vh;               /* mehr Höhe zeigt mehr vom Motiv */
+    min-height: 560px;          /* zusätzliche Sicherheitskante */
+  }
+  .hero-img{
+    object-fit: cover;
+    object-position: 50% 42%;   /* Fokus leicht nach oben -> wirkt weniger gezoomt */
+  }
+  /* Verlauf unten etwas kürzer, damit mehr Bild sichtbar ist */
+  .hero::after{
+    height: 34vh;               /* vorher höher – jetzt dezenter */
+    opacity: .85;               /* sanfter, aber noch lesbar */
+  }
+}
+
+/* OPTIONAL: Falls auf sehr kleinen Phones noch zu „nah dran“,
+   kannst du nur für XS-Geräte auf 'contain' umschalten (zeigt alles,
+   evtl. mit schmalen Rändern oben/unten) */
+/*
+@media (max-width: 390px){
+  .hero{ height: auto; min-height: unset; }
+  .hero-img{ object-fit: contain; background: var(--ivory); }
+}
+*/
