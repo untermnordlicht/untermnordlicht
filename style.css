@@ -261,3 +261,101 @@ p{ margin:0 0 12px; }
   .brand h1{ font-size:22px; }
   .motto{ font-size:12px; }
 }
+/* === v0.8.4 Layout-Polish === */
+
+/* Desktop: Über-uns-Bild höher, Text schmaler */
+.about-hero,
+#ueber-uns .about-hero {
+  /* behält Breite, gibt mehr Höhe */
+  min-height: 460px;            /* vorher ~360px */
+  aspect-ratio: 21 / 9;         /* sanft breit, mehr Tiefe */
+  object-fit: cover;
+  object-position: center 55%;  /* etwas tieferer Fokus */
+}
+
+.about-content,
+#ueber-uns .about-content {
+  max-width: 700px;             /* vorher 760–800px */
+  margin: 28px auto;
+  line-height: 1.75;            /* ruhigeres Schriftbild */
+}
+
+/* Mobile: Hero höher + besseren Ausschnitt wählen */
+@media (max-width: 720px){
+  .hero{
+    height: 64vh;               /* vorher ~56vh */
+    min-height: 420px;          /* verhindert „schmal“ */
+  }
+  .hero-img{
+    object-fit: cover;
+    object-position: 50% 55%;   /* Fokus leicht nach unten (Sonne/Womo) */
+  }
+}
+
+/* Optional: Social-Icons mobil etwas luftiger (falls nötig) */
+@media (max-width: 720px){
+  .social { gap: 12px; }
+  .social a { padding: 4px 6px; }
+}
+/* === v0.8.4 Layout-Polish === */
+
+/* --- Über uns Bild & Text --- */
+.about-hero img {
+  width: 100%;
+  min-height: 460px;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 55%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.about-content {
+  max-width: 700px;
+  margin: 28px auto;
+  line-height: 1.75;
+  text-align: justify;
+  font-size: 1rem;
+  color: var(--forest);
+}
+
+.about-content strong {
+  color: var(--midnight);
+}
+
+.about-quote {
+  margin-top: 32px;
+  font-style: italic;
+  color: var(--midnight);
+  text-align: center;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* --- Mobile Anpassungen --- */
+@media (max-width: 720px) {
+  .hero {
+    height: 64vh;
+    min-height: 420px;
+  }
+  .hero-img {
+    object-fit: cover;
+    object-position: 50% 55%;
+  }
+  .about-hero img {
+    min-height: 340px;
+    object-position: 50% 55%;
+  }
+  .about-content {
+    padding: 0 16px;
+  }
+}
+
+/* --- Versionsinfo unten links --- */
+.version {
+  position: fixed;
+  bottom: 6px;
+  left: 8px;
+  font-size: 12px;
+  opacity: 0.5;
+}
