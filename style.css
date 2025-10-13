@@ -404,3 +404,10 @@ p{ margin:0 0 12px; }
 .grid.photos .card img { width:100%; aspect-ratio: 4/3; object-fit:cover; display:block; }
 @media (max-width:900px){ .grid.photos{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:600px){ .grid.photos{ grid-template-columns:1fr; } }
+
+
+/* Lightbox */
+.lightbox-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000; padding:24px}
+.lightbox-backdrop.open{display:flex}
+.lightbox-image{max-width:92vw; max-height:90vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.lightbox-backdrop:focus{outline:none}
