@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>untermnordlicht – Start</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>untermnordlicht – Start</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-
+<body class="home">
 <header class="topbar">
-  <nav class="nav-left">
+  <div class="nav-left">
     <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
-      MENÜ <span class="chev">▾</span>
+      MENÜ <span class="chev">▼</span>
     </button>
-    <div id="menu-panel" class="menu-panel" role="menu">
-      <a role="menuitem" href="index.html">Startseite</a>
-      <a role="menuitem" href="bilder.html">Bilder</a>
+    <nav id="menu-panel" class="menu-panel" role="menu">
+      <a role="menuitem" href="bilder.html">Fotos</a>
+      <a role="menuitem" href="index.html">Bücher</a>
+      <a role="menuitem" href="index.html">Prints</a>
       <a role="menuitem" href="ueber-uns.html">Über uns</a>
-    </div>
-  </nav>
+      <a role="menuitem" href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </div>
 
   <div class="brand">
     <h1>untermnordlicht</h1>
@@ -46,22 +47,40 @@
     </a>
   </div>
 </header>
-
 <main>
-  <section class="hero" style="--hero:url('assets/hero.jpg')">
-    <div class="hero" style="--hero:url('https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/hero.jpg')">
-  </section>
+<section class="hero" style="--hero:url('https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/hero.jpg')">
+    <div class="hero-overlay"></div>
+</section>
+<section id="ueber-uns" class="wrap">
+  <h2>Über uns</h2>
 
-  <section class="wrap">
-    <h2>Willkommen</h2>
-    <p>Ein Leben zwischen Wald, Licht und Stille – inspiriert vom Norden.</p>
-  </section>
+  <div class="about-hero">
+    <img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/ueber-uns.jpg"
+         alt="Familie im finnischen Sonnenuntergang">
+  </div>
+
+  <div class="about-content">
+    <p>Wir sind Flo, Vanessa und unsere zwei Jungs – eine Familie, die das einfache Leben liebt.
+    Manchmal unterwegs im Wohnmobil, manchmal zuhause – immer mit dem Wunsch nach Ruhe, Natur und Echtheit.</p>
+
+    <p><strong>untermnordlicht</strong> steht für ein bewusstes Leben – zwischen Alltag und kleinen Abenteuern.
+    Für warme Tassen Kaffee am Morgen, nasse Kinderstiefel vor der Tür, frische Luft im Gesicht und Momente, die bleiben.</p>
+
+    <p>Finnland ist für uns mehr als ein Reiseziel – es ist ein Gefühl. Ein Stück Heimat im Herzen,
+    das uns lehrt: Glück braucht keine Eile.</p>
+
+    <p>Hier findest du Geschichten aus unserem Familienalltag, kleine Ideen für ein achtsames Leben,
+    Tipps rund ums Wohnmobil und die Freude am Einfachen.</p>
+
+    <blockquote class="about-quote">„Manchmal laut, oft leise, immer echt.“</blockquote>
+  </div>
+</section>
 </main>
-
 <footer class="wrap footer small">
-  © <span id="y"></span> untermnordlicht · <span class="ver">v0.9.1</span>
+  © <span id="y"></span> untermnordlicht
+  <span class="version">v0.9.2</span>
 </footer>
 <script src="script.js"></script>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>document.getElementById('y')?.textContent = new Date().getFullYear();</script>
 </body>
 </html>

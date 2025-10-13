@@ -1,5 +1,6 @@
+
 // Menü öffnen/schließen
-const btn   = document.querySelector('.menu-button');
+const btn = document.querySelector('.menu-button');
 const panel = document.getElementById('menu-panel');
 
 function closeMenu(){
@@ -23,11 +24,3 @@ document.addEventListener('click', (e)=>{
 document.addEventListener('keydown', (e)=>{
   if (e.key === 'Escape') closeMenu();
 });
-
-// Aktiven Menüpunkt markieren (pro Seite)
-(function markActive(){
-  const here = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('#menu-panel a').forEach(a=>{
-    if (a.getAttribute('href') === here) a.classList.add('active');
-  });
-})();
