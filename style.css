@@ -97,3 +97,36 @@ body{margin:0;background:var(--ivory);color:var(--forest);font-family:"Open Sans
   .about-hero img{ min-height:340px; object-position:50% 55% }
   .about-text{ padding:0 12px }
 }
+/* === Socials Farb-Fix (0.8.5 Look erzwingen) === */
+
+/* 1) Grund: runde Badges in Ivory, dünner Rand */
+.social-link .icon-badge{
+  background: var(--ivory) !important;
+  border: 2px solid rgba(27,38,59,.12);
+}
+
+/* 2) Instagram-Icon nutzt currentColor → hier Grün setzen */
+.socials a[aria-label="Instagram"] svg{
+  color: var(--forest) !important;   /* stroke & kleine Punktfüllung werden grün */
+}
+
+/* 3) Falls woanders fill/stroke global überschrieben wird → für Pinterest zurücksetzen */
+.socials a[aria-label="Pinterest"] svg,
+.socials a[aria-label="Pinterest"] svg *{
+  fill: unset !important;
+  stroke: unset !important;
+}
+/* und die gewünschten Farben hart setzen (grüner Kreis, elfenbein P) */
+.socials a[aria-label="Pinterest"] svg circle{ fill: var(--forest) !important; }
+.socials a[aria-label="Pinterest"] svg path  { fill: var(--ivory)  !important; }
+/* === Instagram invertiert: grüner Hintergrund, ivory Linien === */
+.socials a[aria-label="Instagram"] svg {
+  background: var(--forest);      /* füllt den Hintergrund */
+  border-radius: 6px;             /* leicht abgerundet, passt zu Iconform */
+  padding: 3px;                   /* kleiner Innenabstand */
+}
+
+.socials a[aria-label="Instagram"] svg * {
+  stroke: var(--ivory) !important;
+  fill: var(--ivory) !important;
+}
