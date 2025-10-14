@@ -1,41 +1,10 @@
-// Menü öffnen/schließen
-const btn   = document.querySelector('.menu-button');
-const panel = document.getElementById('menu-panel');
+console.log('v0.9.4 base');
 
-function closeMenu(){
-  if (!panel) return;
-  panel.classList.remove('open');
-  btn?.classList.remove('rot');
-  btn?.setAttribute('aria-expanded','false');
-}
+// v0.9.5: page fade-in
+window.addEventListener('DOMContentLoaded', ()=> document.body.classList.add('ready'));
 
-btn?.addEventListener('click', (e)=>{
-  e.stopPropagation();
-  const open = panel.classList.toggle('open');
-  btn.classList.toggle('rot', open);
-  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+// v0.9.5: mark gallery images loaded
+document.querySelectorAll('.grid.photos img').forEach(img=>{
+  if (img.complete) img.classList.add('loaded');
+  else img.addEventListener('load', ()=> img.classList.add('loaded'));
 });
-
-document.addEventListener('click', (e)=>{
-  if (panel && !panel.contains(e.target) && !btn?.contains(e.target)) closeMenu();
-});
-
-document.addEventListener('keydown', (e)=>{
-  if (e.key === 'Escape') closeMenu();
-});
-
-// Lightbox für Bilder
-(function(){
-  const grid = document.querySelector('.grid.photos');
-  if(!grid) return;
-  const backdrop = document.querySelector('.lightbox-backdrop');
-  const big = document.querySelector('.lightbox-image');
-  grid.addEventListener('click', (e)=>{
-    const img = e.target.closest('img');
-    if(!img) return;
-    big.src = img.src;
-    backdrop.classList.add('open');
-  });
-  backdrop?.addEventListener('click', ()=> backdrop.classList.remove('open'));
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') backdrop.classList.remove('open'); });
-})();
