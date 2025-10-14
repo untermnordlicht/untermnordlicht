@@ -2,66 +2,64 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fotos – untermnordlicht</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>untermnordlicht – Bilder</title>
+<link rel="stylesheet" href="style.css?v=095">
 </head>
-<body class="bilder">
+<body>
 <header class="topbar">
+  <!-- Menü links -->
   <nav class="nav-left">
     <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
       MENÜ <span class="chev">▾</span>
     </button>
     <div id="menu-panel" class="menu-panel" role="menu">
-      <a role="menuitem" href="index.html">Startseite</a>
-      <a role="menuitem" href="bilder.html" class="active">Bilder</a>
+      <a role="menuitem" href="index.html#home">Startseite</a>
+      <a role="menuitem" href="bilder.html">Bilder</a>
       <a role="menuitem" href="ueber-uns.html">Über uns</a>
     </div>
   </nav>
+
+  <!-- Titel + Motto in der Mitte -->
   <div class="brand">
-    <h1><a href="index.html">untermnordlicht</a></h1>
+    <a href="index.html"><h1>untermnordlicht</h1></a>
     <p class="motto">einfach leben, tief fühlen</p>
   </div>
+
+  <!-- Socials rechts (0.9.4-Optik) -->
   <div class="nav-right socials">
-    <!-- Instagram -->
-    <a class="social-link" href="https://instagram.com/untermnordlicht" target="_blank" rel="noopener" aria-label="Instagram">
-      <span class="icon-badge">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-          <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" ry="4.5" fill="none" stroke="var(--forest)" stroke-width="2"/>
-          <circle cx="12" cy="12" r="4.2" fill="none" stroke="var(--forest)" stroke-width="2"/>
-          <circle cx="17.3" cy="6.7" r="1.2" fill="var(--forest)"/>
-        </svg>
-      </span>
+    <!-- Instagram (gefüllter grüner Kreis) -->
+    <a class="icon ig" href="https://instagram.com/untermnordlicht" aria-label="Instagram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill="var(--forest)"></circle>
+        <rect x="7" y="7" width="10" height="10" rx="3" ry="3" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+        <circle cx="12" cy="12" r="3.5" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+        <circle cx="16.2" cy="7.8" r="1.2" fill="var(--ivory)"/>
+      </svg>
     </a>
-    <!-- Pinterest (grüner Kreis + ivory P) -->
-    <a class="social-link" href="https://pinterest.com/untermnordlicht" target="_blank" rel="noopener" aria-label="Pinterest">
-      <span class="icon-badge">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-          <circle cx="12" cy="12" r="12" fill="var(--forest)"></circle>
-          <path fill="var(--ivory)" d="M12 2C6.48 2 2 6.48 2 12c0 4.2 2.67 7.8 6.45 9.18-.09-.78-.17-1.97.04-2.82.18-.76 1.16-4.84 1.16-4.84s-.29-.58-.29-1.43c0-1.34.78-2.35 1.75-2.35.83 0 1.23.62 1.23 1.36 0 .83-.53 2.07-.8 3.22-.23.96.48 1.75 1.42 1.75 1.7 0 3.01-1.8 3.01-4.4 0-2.3-1.66-3.91-4.03-3.91-2.75 0-4.37 2.06-4.37 4.19 0 .83.32 1.72.73 2.21.08.1.09.19.07.29-.08.32-.26 1.01-.3 1.15-.05.18-.15.22-.35.13-1.3-.61-2.1-2.52-2.1-4.06 0-3.3 2.4-6.34 6.93-6.34 3.64 0 6.47 2.6 6.47 6.07 0 3.62-2.28 6.54-5.45 6.54-1.07 0-2.07-.56-2.41-1.22l-.66 2.53c-.24.93-.88 2.09-1.31 2.8.99.31 2.03.47 3.11.47 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
-      </span>
+
+    <!-- Pinterest (grüner Kreis + ivory „P“) -->
+    <a class="icon pin" href="https://pinterest.com/untermnordlicht" aria-label="Pinterest" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill="var(--forest)"></circle>
+        <path fill="var(--ivory)" d="M12 2C6.48 2 2 6.48 2 12c0 4.2 2.67 7.8 6.45 9.18-.09-.78-.17-1.97.04-2.82.18-.76 1.16-4.84 1.16-4.84s-.29-.58-.29-1.43c0-1.34.78-2.35 1.75-2.35.83 0 1.23.62 1.23 1.36 0 .83-.53 2.07-.8 3.22-.23.96.48 1.75 1.42 1.75 1.7 0 3.01-1.8 3.01-4.4 0-2.3-1.66-3.91-4.03-3.91-2.75 0-4.37 2.06-4.37 4.19 0 .83.32 1.72.73 2.21.08.1.09.19.07.29-.08.32-.26 1.01-.3 1.15-.05.18-.15.22-.35.13-1.3-.61-2.1-2.52-2.1-4.06 0-3.3 2.4-6.34 6.93-6.34 3.64 0 6.47 2.6 6.47 6.07 0 3.62-2.28 6.54-5.45 6.54-1.07 0-2.07-.56-2.41-1.22l-.66 2.53c-.24.93-.88 2.09-1.31 2.8.99.31 2.03.47 3.11.47 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+      </svg>
     </a>
   </div>
 </header>
-<main>
-  <section class="wrap">
-    <h1>Fotos</h1>
-    <div class="grid photos">
-      <figure class="card"><img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/see.jpg" alt=""></figure>
-      <figure class="card"><img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/steg.jpg" alt=""></figure>
-      <figure class="card"><img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/weg.jpg" alt=""></figure>
-      <figure class="card"><img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/sonnenuntergang.jpg" alt=""></figure>
-    </div>
-  </section>
+<main class="wrap">
+  <h1>Fotos</h1>
+  <div class="gallery">
+    <img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/see.jpg" alt="">
+    <img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/steg.jpg" alt="">
+    <img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/weg.jpg" alt="">
+    <img src="https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/sonnenuntergang.jpg" alt="">
+  </div>
 </main>
-
-<!-- Lightbox -->
-<div class="lightbox-backdrop" aria-hidden="true">
-  <img class="lightbox-image" alt="">
-</div>
-
-<footer class="wrap footer small">© <span id="y"></span> untermnordlicht · <span class="ver">v0.9.4</span></footer>
-<script src="script.js"></script>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<footer class="wrap footer small">
+  © <span id="y"></span> untermnordlicht · <span class="ver">v0.9.5</span>
+</footer>
+<script defer src="script.js?v=095"></script>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
