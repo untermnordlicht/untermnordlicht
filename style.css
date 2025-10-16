@@ -185,3 +185,16 @@ img { max-width: 100%; height: auto; }
     rgba(248,245,239,0.7) 80%,
     rgba(248,245,239,1) 100%) !important;
 }
+
+/* v0.9.13: hero heading lower + centered wrap paragraph */
+.hero-content{
+  position: relative;
+  transform: translateY(20%);
+}
+@media (min-width: 900px){
+  .hero-content{ transform: translateY(22%); }
+}
+.wrap p{
+  text-align: center;
+  margin-inline: auto;
+}
