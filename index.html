@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="home">
+<a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <header class="topbar">
   <nav class="nav-left">
     <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
@@ -43,7 +44,7 @@
     </a>
   </div>
 </header>
-<main>
+<main id="inhalt">
   <section class="hero" style="--hero:url('https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/hero.jpg')">
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -60,5 +61,38 @@
 <footer class="wrap footer small">© <span id="y"></span> untermnordlicht · <span class="ver">v0.9.4</span></footer>
 <script src="script.js"></script>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+<script id="__enhance_v097__">
+// Menü-Toggle (progressive; nutzt vorhandene Klassen/IDs falls vorhanden)
+(function(){
+  var btn = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('hauptmenue');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Menü öffnen' : 'Menü schließen');
+      nav.hidden = open;
+    });
+  }
+})();
+// Aktiver Link
+(function(){
+  var links = document.querySelectorAll('#hauptmenue a[href]');
+  links.forEach ? links.forEach(function(a){ if (a.href === location.href) a.setAttribute('aria-current','page'); }) : null;
+})();
+// Sanftes Einblenden (respektiert reduzierte Bewegung)
+(function(){
+  try{
+    if (matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      var els = document.querySelectorAll('.fade-in');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('is-visible'); });
+      }, { rootMargin: '12% 0px' });
+      els.forEach ? els.forEach(function(el){ io.observe(el); }) : null;
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
