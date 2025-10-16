@@ -158,3 +158,20 @@ img { max-width: 100%; height: auto; }
     rgba(248,245,239,0) 70%,
     rgba(248,245,239,1) 100%) !important;
 }
+
+/* v0.9.11 hero refinement: frame more image, smoother ivory fade, keep text visible */
+.hero{
+  /* Show more of the image vertically */
+  min-height: clamp(52vh, 64vh, 72vh);
+  background-position: center 25% !important; /* move focus slightly down from absolute top */
+  background-size: cover !important;
+}
+.hero-overlay{
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background: linear-gradient(to bottom,
+    rgba(248,245,239,0) 0%,
+    rgba(248,245,239,0) 68%,
+    rgba(248,245,239,0.5) 85%,
+    rgba(248,245,239,1) 100%) !important;
+}
+.hero-content{ position:relative; z-index:1; }
