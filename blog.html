@@ -1,0 +1,65 @@
+---
+layout: null
+title: Blog – Unterm Nordlicht
+permalink: /blog/
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog – Unterm Nordlicht</title>
+  <meta name="description" content="🜂 Geschichten unterm Nordlicht – Ein Platz für Worte, Gedanken und Wege.">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/">Unterm Nordlicht</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="hauptmenue" aria-label="Menü öffnen">MENÜ</button>
+      <nav id="hauptmenue" hidden>
+        <a href="/">Start</a>
+        <a href="/galerie.html">Fotos</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap">
+    <section class="content" style="max-width:68ch; margin:2rem auto; text-align:center">
+      <h1 class="claim">🜂 Blog | Geschichten unterm Nordlicht</h1>
+      <p>„Ein Platz für Worte, Gedanken und Wege. Geschichten aus unserem Leben zwischen Alltag und Aufbruch, zwischen Deutschland und Finnland. Über Familie, Einfachheit, Mut – und das Vertrauen, dass alles seinen Sinn hat.“</p>
+    </section>
+
+    <section class="fade-in" style="max-width:1100px; margin:0 auto 2rem">
+      <ul class="grid" style="list-style:none; padding:0; margin:0">
+        {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}" style="text-decoration:none; color:inherit">
+            <figure>
+              {% if post.image %}
+              <img src="{{ post.image }}" width="600" height="400" loading="lazy" decoding="async" alt="{{ post.title | escape }}">
+              {% endif %}
+              <figcaption style="margin-top:.5rem">
+                <h3 style="margin:.25rem 0">{{ post.title }}</h3>
+                {% if post.date %}<p style="opacity:.7; margin:0">{{ post.date | date: "%d.%m.%Y" }}</p>{% endif %}
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">© 2025 unternmondlicht</p>
+      <span class="version">v1.0.0</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
