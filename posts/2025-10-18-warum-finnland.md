@@ -1,5 +1,5 @@
 ---
-layout: null
+layout: post
 title: "Warum Finnland"
 date: 2025-10-18
 permalink: /blog/warum-finnland/
