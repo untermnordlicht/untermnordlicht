@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} – Unterm Nordlicht</title>
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/">Unterm Nordlicht</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="hauptmenue" aria-label="Menü öffnen">MENÜ</button>
+      <nav id="hauptmenue" hidden>
+        <a href="/">Start</a>
+        <a href="/galerie.html">Fotos</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="--hero:url('{{ page.image | default: site.default_image }}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h2 class="hero-title">{{ page.title }}</h2>
+      {% if page.date %}<p class="hero-sub">{{ page.date | date: "%d.%m.%Y" }}</p>{% endif %}
+    </div>
+  </section>
+
+  <main id="inhalt">
+    <article class="wrap fade-in" style="max-width:68ch; margin:2rem auto;">
+      {{ content }}
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">© 2025 unternmondlicht</p>
+      <span class="version">v1.0.0</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
