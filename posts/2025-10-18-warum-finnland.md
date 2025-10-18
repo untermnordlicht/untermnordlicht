@@ -16,16 +16,16 @@ Schon als kleines Mädchen, lange bevor ich jemals dort war.
 
 Ich hatte eine finnische Flagge über meinem Bett hängen,
 hielt im Erdkundeunterricht ein Referat über dieses Land
-& träumte von Wäldern, Seen & Stille.
+und träumte von Wäldern, Seen und Stille.
 
-Nach & nach tauchten Zeichen auf.
-Zufällig & doch irgendwie geführt.
+Nach und nach tauchten Zeichen auf.
+Zufällig – und doch irgendwie geführt.
 2006 hörte ich zum ersten Mal Sunrise Avenue,
 später erfuhr ich, dass sie aus Finnland kamen.
 
 Seitdem zieht mich alles Nordische an:
 die Musik, die Sprache, das Licht, die Menschen.
-Die Ruhe, die Ehrlichkeit, der Geruch von Holz & Regen.
+Die Ruhe, die Ehrlichkeit, der Geruch von Holz und Regen.
 
 Heute weiß ich: Finnland bin ich.
 Es kann gar nichts anderes sein.
