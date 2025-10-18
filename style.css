@@ -251,3 +251,11 @@ img { max-width: 100%; height: auto; }
 /* Falls nötig: Overlay unter Text halten */
 .hero-overlay { z-index: 0; }
 .hero-content { z-index: 1; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; }
+/* Blog-Post: Topbar sicher über dem Hero */
+.topbar { position: relative; z-index: 20; }
+.hero-overlay { z-index: 0; }
+.hero-content {
+  z-index: 1;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
