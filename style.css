@@ -245,3 +245,9 @@ img { max-width: 100%; height: auto; }
 }
 /* post-seiten: header sicher über dem hero */
 .topbar{ z-index: 10; }
+/* Blog-Post: Topbar sicher über dem Hero */
+.topbar { position: relative; z-index: 20; }
+
+/* Falls nötig: Overlay unter Text halten */
+.hero-overlay { z-index: 0; }
+.hero-content { z-index: 1; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; }
