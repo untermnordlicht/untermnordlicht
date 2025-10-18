@@ -198,3 +198,48 @@ img { max-width: 100%; height: auto; }
   text-align: center;
   margin-inline: auto;
 }
+/* === Hero – Mitte + richtiger Fokus (v0.9.14) === */
+.hero{
+  position: relative;                           /* für absolute Kinder */
+  min-height: 60vh;                             /* genug Höhe für echtes „Mitte“-Gefühl */
+  background: var(--hero) no-repeat center 35% !important; /* statt 'center top' */
+  background-size: cover !important;
+}
+
+/* Fade bleibt elfenbeinweiß – Start etwas früher für bessere Lesbarkeit */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* Overlay unter dem Text */
+  background: linear-gradient(to bottom,
+    rgba(248,245,239,0) 0%,
+    rgba(248,245,239,0.3) 60%,
+    rgba(248,245,239,0.7) 80%,
+    rgba(248,245,239,1) 100%) !important;
+}
+
+/* Tervetuloa mittig auf dem Bild */
+.hero-content{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  /* vertikale Mitte */
+  text-align: center;
+  z-index: 1;               /* über dem Overlay */
+  pointer-events: none;
+}
+
+/* Alte Verschiebung aus v0.9.13 sicher neutralisieren */
+.hero-content{ transform: none !important; }
+@media (min-width: 900px){
+  .hero-content{ transform: none !important; }
+}
+
+/* Spruch-Zentrierung unterhalb des Heros */
+.wrap p{
+  text-align: center;
+  margin-inline: auto;
+}
