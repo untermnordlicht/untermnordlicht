@@ -6,6 +6,7 @@ permalink: /blog/warum-finnland/
 image: /assets/blog/2025-10-18-Warum-Finnland/Warum-Finnland.jpg
 description: "Gedanken darüber, warum mich der Norden so tief berührt."
 ---
+Testzeile – sollte direkt unter dem Hero erscheinen.
 
 > „Manche Orte findet man nicht – sie finden dich.“
 > Und manchmal braucht es Jahre, bis du erkennst, dass dieses Gefühl nie zufällig war.
