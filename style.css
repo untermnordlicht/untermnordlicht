@@ -287,20 +287,24 @@ article.wrap {
   z-index: 0 !important;
   opacity: 0.4 !important; /* sanfter, aber nicht alles verdecken */
 }
-/* Topbar: fix oben, wie auf der Startseite */
-:root { --topbar-h: 64px; } /* ggf. anpassen, falls deine Topbar höher/niedriger ist */
+/* --- Einheitliche, fixierte Topbar für alle Seiten --- */
+:root { --topbar-h: 64px; }
 
-.topbar{
-  position: sticky;         /* bleibt am oberen Rand kleben */
+.topbar {
+  position: fixed;
   top: 0;
-  z-index: 100;             /* sicher über Hero/Overlay */
-  background: rgba(248,245,239,0.85); /* elfenbein-weiß, leicht transparent – wie Start */
-  backdrop-filter: blur(4px);         /* sanfter Glas-Effekt, optional */
-  -webkit-backdrop-filter: blur(4px);
+  left: 0;
+  right: 0;
+  height: var(--topbar-h);
+  z-index: 100;
+  background: #f8f5ef; /* dein elfenbeinweiß, wie Startseite */
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
-/* Falls du lieber „richtig fixiert“ magst statt sticky:
-.topbar{ position: fixed; left:0; right:0; top:0; }
-body{ padding-top: var(--topbar-h); }  /* verhindert Überlappung */
-*/
+body {
+  padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
+}
