@@ -271,3 +271,19 @@ img { max-width: 100%; height: auto; }
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center; text-align: center;
 }
+/* --- Sichtbarkeitsfix für Blogposts --- */
+article.wrap {
+  position: relative !important;
+  z-index: 5 !important;
+  color: var(--forest, #111) !important;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero-overlay {
+  z-index: 0 !important;
+  opacity: 0.4 !important; /* sanfter, aber nicht alles verdecken */
+}
