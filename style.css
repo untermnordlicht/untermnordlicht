@@ -308,4 +308,5 @@ article.wrap {
 body {
   padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
 }
-.menu-panel[hidden] { display: none; }
+.topbar { position: relative; z-index: 1000; }
+.menu-panel[hidden]{ display:none; }
