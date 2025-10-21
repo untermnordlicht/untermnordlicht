@@ -1,0 +1,56 @@
+---
+layout: null
+title: Alltag & Familie – Unterm Nordlicht
+permalink: /blog/alltag-familie/
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alltag & Familie – Unterm Nordlicht</title>
+  <meta name="description" content="Beiträge in der Rubrik Alltag & Familie.">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h1><a href="/">untermnordlicht</a></h1>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel">MENÜ</button>
+      <div id="menu-panel" class="menu-panel" role="menu" hidden>
+        <a role="menuitem" href="/">Startseite</a>
+        <a role="menuitem" href="/bilder.html">Bilder</a>
+        <a role="menuitem" href="/ueber-uns.html">Über uns</a>
+        <a role="menuitem" href="/kontakt.html">Kontakt</a>
+        <a role="menuitem" href="/blog.html">Blog</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" style="max-width:1100px; margin: 2rem auto;">
+    <h1 class="claim" style="text-align:center;">Alltag & Familie</h1>
+    <ul class="grid" style="list-style:none; padding:0; margin:1.5rem 0;">
+      {% for post in site.posts %}
+        {% if post.categories contains 'Alltag & Familie' %}
+          <li class="fade-in">
+            <a href="{{ post.url }}" style="text-decoration:none; color:inherit;">
+              {% if post.image %}<img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" style="width:100%; height:auto;">{% endif %}
+              <h3 style="margin:.5rem 0 0;">{{ post.title }}</h3>
+              <p style="opacity:.7; margin:.1rem 0;">{{ post.date | date: "%d.%m.%Y" }}</p>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="copyright">© 2025 unternmondlicht</p>
+      <span class="version">v1.0.3</span>
+    </div>
+  </footer>
+
+  <script src="{{ '/script.js' | relative_url }}" defer></script>
+</body>
+</html>
