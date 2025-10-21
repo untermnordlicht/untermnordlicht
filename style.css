@@ -308,3 +308,4 @@ article.wrap {
 body {
   padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
 }
+.menu-panel[hidden] { display: none; }
