@@ -10,23 +10,23 @@ permalink: /blog.html
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🜂 Blog | Geschichten unterm Nordlicht</title>
   <meta name="description" content="Ein Platz für Worte, Gedanken und Wege. Geschichten zwischen Alltag und Aufbruch, Deutschland und Finnland.">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css">>
 </head>
 <body>
 
   <!-- Header wie auf Startseite: gleiche Klassen/IDs für dein JS -->
   <header class="topbar">
     <nav class="nav-left">
-      <button class="menu-toggle" aria-expanded="false" aria-controls="hauptmenue">
+      <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
         MENÜ <span class="chev">▾</span>
       </button>
-      <div id="hauptmenue" class="menu-panel" role="menu" hidden>
-        <a role="menuitem" href="/">Startseite</a>
-        <a role="menuitem" href="/bilder.html">Bilder</a>
-        <a role="menuitem" href="/ueber-uns.html">Über uns</a>
-        <a role="menuitem" href="/kontakt.html">Kontakt</a>
-        <a role="menuitem" href="/blog.html" class="active">Blog</a>
-      </div>
+      <div id="menu-panel" class="menu-panel" role="menu" hidden>
+<a role="menuitem" href="/">Startseite</a>
+<a role="menuitem" href="/bilder.html">Bilder</a>
+<a role="menuitem" href="/ueber-uns.html">Über uns</a>
+<a role="menuitem" href="/kontakt.html">Kontakt</a>
+<a role="menuitem" href="/blog.html" class="active">Blog</a>
+</div>
     </nav>
     <div class="brand">
       <h1><a href="/">untermnordlicht</a></h1>
@@ -90,7 +90,7 @@ permalink: /blog.html
   <footer class="site-footer">
     <div class="container">
       <p class="copyright">© 2025 unternmondlicht</p>
-      <span class="version">v1.0.3</span>
+      <span class="version">v1.0.4</span>
     </div>
   </footer>
 
@@ -126,5 +126,6 @@ permalink: /blog.html
   }catch(e){}
 })();
 </script>
+<script src="/script.js?v=104" defer></script>
 </body>
 </html>

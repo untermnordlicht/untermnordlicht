@@ -371,3 +371,9 @@ body {
 
 /* Sicherheit: nichts überdeckt den Klick */
 .hero-overlay { pointer-events: none; }
+
+
+/* --- MENU FIX v1.0.4 --- */
+.menu-panel[hidden]{ display:none; }
+.topbar{ position: relative; z-index: 1000; }
+

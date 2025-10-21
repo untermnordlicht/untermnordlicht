@@ -10,7 +10,7 @@ permalink: /blog/nordwaerts/
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nordwärts – Unterm Nordlicht</title>
   <meta name="description" content="Beiträge in der Rubrik Nordwärts.">
- <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+ <link rel="stylesheet" href="/style.css">>
 </head>
 <body>
   <header class="topbar">
@@ -18,13 +18,13 @@ permalink: /blog/nordwaerts/
     <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
       MENÜ <span class="chev">▾</span>
    </button>
-      <div id="hauptmenue" class="menu-panel" role="menu" hidden>
-        <a role="menuitem" href="/">Startseite</a>
-        <a role="menuitem" href="/bilder.html">Bilder</a>
-        <a role="menuitem" href="/ueber-uns.html">Über uns</a>
-        <a role="menuitem" href="/kontakt.html">Kontakt</a>
-        <a role="menuitem" href="/blog.html" class="active">Blog</a>
-      </div>
+      <div id="menu-panel" class="menu-panel" role="menu" hidden>
+<a role="menuitem" href="/">Startseite</a>
+<a role="menuitem" href="/bilder.html">Bilder</a>
+<a role="menuitem" href="/ueber-uns.html">Über uns</a>
+<a role="menuitem" href="/kontakt.html">Kontakt</a>
+<a role="menuitem" href="/blog.html">Blog</a>
+</div>
   </nav>
 
   <div class="brand">
@@ -74,7 +74,7 @@ permalink: /blog/nordwaerts/
   <footer class="site-footer">
     <div class="container">
       <p class="copyright">© 2025 unternmondlicht</p>
-      <span class="version">v1.0.3</span>
+      <span class="version">v1.0.4</span>
     </div>
   </footer>
 
@@ -113,5 +113,6 @@ permalink: /blog/nordwaerts/
   }catch(e){}
 })();
 </script>
+<script src="/script.js?v=104" defer></script>
 </body>
 </html>
