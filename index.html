@@ -10,26 +10,19 @@
 <a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <header class="topbar">
   <nav class="nav-left">
-   <!-- Menü: komplett ohne JS -->
-<input id="nav-toggle" type="checkbox" hidden>
-<label for="nav-toggle" class="menu-button">
-  MENÜ <span class="chev">▾</span>
-</label>
-
-<div class="menu-panel" role="menu">
-  <a role="menuitem" href="/">Startseite</a>
-  <a role="menuitem" href="/bilder.html">Bilder</a>
-  <a role="menuitem" href="/ueber-uns.html">Über uns</a>
-  <a role="menuitem" href="/kontakt.html">Kontakt</a>
-  <a role="menuitem" href="/blog.html">Blog</a>
-</div>
+    <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
+      MENÜ <span class="chev">▾</span>
+    </button>
+    <div id="menu-panel" class="menu-panel" role="menu">
+      <a role="menuitem" href="index.html" class="active">Startseite</a>
+      <a role="menuitem" href="bilder.html">Bilder</a>
+      <a role="menuitem" href="ueber-uns.html">Über uns</a>
+    </div>
   </nav>
-
   <div class="brand">
-    <h1><a href="/">untermnordlicht</a></h1>
+    <h1><a href="index.html">untermnordlicht</a></h1>
     <p class="motto">einfach leben, tief fühlen</p>
   </div>
-
   <div class="nav-right socials">
     <!-- Instagram -->
     <a class="social-link" href="https://instagram.com/untermnordlicht" target="_blank" rel="noopener" aria-label="Instagram">
@@ -68,10 +61,43 @@
 <footer class="wrap footer small">
   <div class="container">
     <p class="copyright">© 2025 untermnordlicht</p>
-    <span class="version">v1.0.4</span>
+    <span class="version">v1.0.2</span>
   </div>
 </footer>
-<script src="/script.js?v=104" defer></script>
+<script src="script.js"></script>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 
+<script id="__enhance_v097__">
+// Menü-Toggle (progressive; nutzt vorhandene Klassen/IDs falls vorhanden)
+(function(){
+  var btn = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('hauptmenue');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Menü öffnen' : 'Menü schließen');
+      nav.hidden = open;
+    });
+  }
+})();
+// Aktiver Link
+(function(){
+  var links = document.querySelectorAll('#hauptmenue a[href]');
+  links.forEach ? links.forEach(function(a){ if (a.href === location.href) a.setAttribute('aria-current','page'); }) : null;
+})();
+// Sanftes Einblenden (respektiert reduzierte Bewegung)
+(function(){
+  try{
+    if (matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      var els = document.querySelectorAll('.fade-in');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('is-visible'); });
+      }, { rootMargin: '12% 0px' });
+      els.forEach ? els.forEach(function(el){ io.observe(el); }) : null;
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>

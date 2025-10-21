@@ -1,0 +1,8 @@
+title: Unterm Nordlicht
+url: https://untermnordlicht.de
+baseurl: ""            # leer lassen, weil eigene Domain / Root
+timezone: Europe/Berlin
+permalink: /blog/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap

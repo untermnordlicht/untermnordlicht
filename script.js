@@ -1,24 +1,41 @@
-// v1.0.4 robust menu toggle
-(function () {
-  const btn   = document.querySelector('header .menu-button, header .menu-toggle');
-  const panel = document.querySelector('header #menu-panel, header #hauptmenue, header .menu-panel');
-  if (!btn || !panel) return;
+// Menü öffnen/schließen
+const btn   = document.querySelector(".menu-button");
+const panel = document.getElementById("menu-panel");
 
-  function setOpen(open){
-    if (open) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','');
-    btn.setAttribute('aria-expanded', String(open));
-  }
+function closeMenu(){
+  if (!panel) return;
+  panel.classList.remove("open");
+  btn?.classList.remove("rot");
+  btn?.setAttribute("aria-expanded","false");
+}
 
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    setOpen(panel.hasAttribute('hidden'));
+btn?.addEventListener("click", (e)=>{
+  e.stopPropagation();
+  const open = panel.classList.toggle("open");
+  btn.classList.toggle("rot", open);
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+});
+
+document.addEventListener("click", (e)=>{
+  if (panel && !panel.contains(e.target) && !btn?.contains(e.target)) closeMenu();
+});
+
+document.addEventListener("keydown", (e)=>{
+  if (e.key === "Escape") closeMenu();
+});
+
+// Lightbox für Bilder
+(function(){
+  const grid = document.querySelector(".grid.photos");
+  if(!grid) return;
+  const backdrop = document.querySelector(".lightbox-backdrop");
+  const big = document.querySelector(".lightbox-image");
+  grid.addEventListener("click", (e)=>{
+    const img = e.target.closest("img");
+    if(!img) return;
+    big.src = img.src;
+    backdrop.classList.add("open");
   });
-
-  document.addEventListener('click', function(e){
-    if (!panel.contains(e.target) && !btn.contains(e.target)) setOpen(false);
-  });
-
-  window.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') setOpen(false);
-  });
+  backdrop?.addEventListener("click", ()=> backdrop.classList.remove("open"));
+  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") backdrop.classList.remove("open"); });
 })();
