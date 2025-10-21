@@ -1,41 +1,37 @@
-// Menü öffnen/schließen
-const btn   = document.querySelector(".menu-button");
-const panel = document.getElementById("menu-panel");
+// Robustes Menü: unterstützt .menu-toggle ODER .menu-button
+// und #hauptmenue ODER #menu-panel
+(function () {
+  const btn = document.querySelector('.menu-toggle, .menu-button');
+  if (!btn) return;
 
-function closeMenu(){
+  const controls = btn.getAttribute('aria-controls');
+  let panel =
+    (controls && document.getElementById(controls)) ||
+    document.getElementById('hauptmenue') ||
+    document.getElementById('menu-panel');
+
   if (!panel) return;
-  panel.classList.remove("open");
-  btn?.classList.remove("rot");
-  btn?.setAttribute("aria-expanded","false");
-}
 
-btn?.addEventListener("click", (e)=>{
-  e.stopPropagation();
-  const open = panel.classList.toggle("open");
-  btn.classList.toggle("rot", open);
-  btn.setAttribute("aria-expanded", open ? "true" : "false");
-});
+  function setOpen(open) {
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+  }
 
-document.addEventListener("click", (e)=>{
-  if (panel && !panel.contains(e.target) && !btn?.contains(e.target)) closeMenu();
-});
-
-document.addEventListener("keydown", (e)=>{
-  if (e.key === "Escape") closeMenu();
-});
-
-// Lightbox für Bilder
-(function(){
-  const grid = document.querySelector(".grid.photos");
-  if(!grid) return;
-  const backdrop = document.querySelector(".lightbox-backdrop");
-  const big = document.querySelector(".lightbox-image");
-  grid.addEventListener("click", (e)=>{
-    const img = e.target.closest("img");
-    if(!img) return;
-    big.src = img.src;
-    backdrop.classList.add("open");
+  // Klick auf Button toggelt
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setOpen(panel.hidden);
   });
-  backdrop?.addEventListener("click", ()=> backdrop.classList.remove("open"));
-  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") backdrop.classList.remove("open"); });
+
+  // Klick außerhalb schließt
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && !btn.contains(e.target)) {
+      setOpen(false);
+    }
+  });
+
+  // ESC schließt
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
 })();
