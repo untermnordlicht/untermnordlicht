@@ -10,16 +10,19 @@
 <a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <header class="topbar">
   <nav class="nav-left">
-    <button type="button" class="menu-button" aria-expanded="false" aria-controls="menu-panel">
+   <!-- Menü: komplett ohne JS -->
+<input id="nav-toggle" type="checkbox" hidden>
+<label for="nav-toggle" class="menu-button">
   MENÜ <span class="chev">▾</span>
-</button>
-     <div id="menu-panel" class="menu-panel" role="menu" hidden>
-        <a role="menuitem" href="/">Startseite</a>
-        <a role="menuitem" href="/bilder.html">Bilder</a>
-        <a role="menuitem" href="/ueber-uns.html">Über uns</a>
-        <a role="menuitem" href="/kontakt.html">Kontakt</a>
-        <a role="menuitem" href="/blog.html" class="active">Blog</a>
-      </div>
+</label>
+
+<div class="menu-panel" role="menu">
+  <a role="menuitem" href="/">Startseite</a>
+  <a role="menuitem" href="/bilder.html">Bilder</a>
+  <a role="menuitem" href="/ueber-uns.html">Über uns</a>
+  <a role="menuitem" href="/kontakt.html">Kontakt</a>
+  <a role="menuitem" href="/blog.html">Blog</a>
+</div>
   </nav>
 
   <div class="brand">
