@@ -10,10 +10,10 @@
 <a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <header class="topbar">
   <nav class="nav-left">
-    <button class="menu-button" aria-expanded="false" aria-controls="menu-panel">
-      MENÜ <span class="chev">▾</span>
-  </button>
-      <div id="menu-panel" class="menu-panel" role="menu" hidden>
+    <button type="button" class="menu-button" aria-expanded="false" aria-controls="menu-panel">
+  MENÜ <span class="chev">▾</span>
+</button>
+     <div id="menu-panel" class="menu-panel" role="menu" hidden>
         <a role="menuitem" href="/">Startseite</a>
         <a role="menuitem" href="/bilder.html">Bilder</a>
         <a role="menuitem" href="/ueber-uns.html">Über uns</a>
@@ -69,5 +69,21 @@
   </div>
 </footer>
 <script src="/script.js?v=103" defer></script>
+  <script>
+(function () {
+  var btn = document.querySelector('.menu-button, .menu-toggle');
+  var panel = document.getElementById('menu-panel') 
+           || document.getElementById('hauptmenue') 
+           || document.querySelector('.menu-panel');
+  if (!btn || !panel) return;
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var willOpen = panel.hasAttribute('hidden');
+    if (willOpen) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','');
+    btn.setAttribute('aria-expanded', String(willOpen));
+  });
+})();
+</script>
 </body>
 </html>
