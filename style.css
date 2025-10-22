@@ -440,3 +440,19 @@ body {
     box-shadow: none;
   }
 }
+/* --- Pinterest Dark Mode: ivory-Fill transparent machen --- */
+@media (prefers-color-scheme: dark) {
+  /* Nur der innere ivory-Fill wird transparent */
+  .social-link[href*="pinterest"] svg path[fill="var(--ivory)"] {
+    fill: transparent !important;
+  }
+
+  /* Kreis und grünes P bleiben wie im Light Mode */
+  .social-link[href*="pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+  .social-link[href*="pinterest"] svg path {
+    stroke: var(--forest) !important;
+    stroke-width: 1.6;
+  }
+}
