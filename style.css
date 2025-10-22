@@ -384,3 +384,30 @@ body {
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
+/* --- Mobile + Dark Mode: Pinterest-Innenkreis weg, nur das "P" sichtbar --- */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  /* 1) Helle Kreis-/Flächen-Hintergründe ausblenden */
+  .social-link[href*="pinterest"] svg circle,
+  .social-link[href*="pinterest"] svg ellipse,
+  .social-link[href*="pinterest"] svg > path:first-of-type {
+    display: none !important;       /* erwischt den runden Hintergrund */
+  }
+
+  /* 2) Badge-Hintergrund transparent lassen */
+  .social-link[href*="pinterest"] .icon-badge {
+    background: transparent !important;
+    border-color: rgba(255,255,255,.10) !important;
+    box-shadow: none !important;
+  }
+
+  /* 3) Alles andere als Outline, das "P" gefüllt */
+  .social-link[href*="pinterest"] svg * {
+    fill: none !important;
+    stroke: var(--ivory) !important;
+    stroke-width: 1.6 !important;
+  }
+  .social-link[href*="pinterest"] svg path:last-of-type {
+    fill: var(--ivory) !important;  /* das "P" selbst */
+    stroke: none !important;
+  }
+}
