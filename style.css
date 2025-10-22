@@ -308,3 +308,22 @@ article.wrap {
 body {
   padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
 }
+/* --- Mobile: Social-Icons kleiner & enger -------------------------------- */
+@media (max-width: 700px) {
+  .nav-right.socials {
+    gap: .28rem; /* enger zusammen */
+  }
+
+  .social-link .icon-badge {
+    width: 32px;        /* kleinerer Kreis */
+    height: 32px;
+    padding: 4px;       /* weniger Innenabstand */
+    border-radius: 9999px;
+    border-width: 1px;  /* dünnere Umrandung */
+  }
+
+  .social-link svg {
+    width: 18px;        /* Icon leicht kleiner */
+    height: 18px;
+  }
+}
