@@ -308,3 +308,13 @@ article.wrap {
 body {
   padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
 }
+@media (max-width: 600px) {
+  .social-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-right.socials {
+    gap: 0.4rem; /* verringert etwas den Abstand zwischen den Icons */
+  }
+}
