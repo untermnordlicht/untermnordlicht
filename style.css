@@ -411,3 +411,13 @@ body {
     stroke: none !important;
   }
 }
+/* --- Pinterest Dark Mode Fix (Mobile + Desktop) --- */
+@media (prefers-color-scheme: dark) {
+  /* Kein heller Kreis im Hintergrund */
+  .social-link[href*="pinterest"] .icon-badge {
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    filter: brightness(0) invert(1) contrast(1.05) !important;
+  }
+}
