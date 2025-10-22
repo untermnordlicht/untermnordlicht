@@ -308,34 +308,3 @@ article.wrap {
 body {
   padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
 }
-/* --- Pinterest fix (ohne HTML-Änderung, IG bleibt unberührt) --- */
-/* Pinterest-Icon wie eine Outline darstellen, farblich wie die Schrift */
-.social-link[href*="pinterest"] svg * {
-  fill: none !important;            /* keine Vollfläche */
-  stroke: currentColor !important;  /* Umriss in Textfarbe */
-  stroke-width: 1.6;                /* ggf. 1.4–1.8 tweaken */
-}
-
-/* Farben je Modus angleichen */
-@media (prefers-color-scheme: light) {
-  .social-link[href*="pinterest"] { color: var(--forest); }
-}
-@media (prefers-color-scheme: dark) {
-  .social-link[href*="pinterest"] { color: var(--ivory); }
-}
-
-/* Mobile: kleinerer Kreis, Icon etwas größer (beide Icons) */
-@media (max-width: 700px) {
-  .nav-right.socials { gap: .35rem; }
-
-  .social-link .icon-badge {
-    width: 36px;
-    height: 36px;
-    padding: 6px;
-    border-radius: 9999px;
-  }
-  .social-link svg {
-    width: 20px;
-    height: 20px;
-  }
-}
