@@ -318,3 +318,23 @@ body {
     gap: 0.4rem; /* verringert etwas den Abstand zwischen den Icons */
   }
 }
+@media (max-width: 700px) {
+  .nav-right.socials {
+    gap: 0.3rem;
+    transform: scale(0.8);
+    transform-origin: right center;
+  }
+
+  .social-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .brand h1 {
+    font-size: 1.2rem; /* optional: Logo-Schrift leicht kleiner, damit’s harmoniert */
+  }
+
+  .brand .motto {
+    font-size: 0.85rem;
+  }
+}
