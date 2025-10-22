@@ -363,3 +363,24 @@ body {
     fill: none !important;
   }
 }
+/* --- Mobile + Dark Mode: Pinterest Icon fixen --- */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  /* Hintergrund vom Kreis transparent machen */
+  .social-link[href*="pinterest"] svg circle,
+  .social-link[href*="pinterest"] svg path[fill],
+  .social-link[href*="pinterest"] svg [fill="var(--ivory)"],
+  .social-link[href*="pinterest"] svg [fill="#EBE7DC"] {
+    fill: transparent !important;
+  }
+
+  /* Das P selbst soll in ivory bleiben */
+  .social-link[href*="pinterest"] svg path:not([fill="none"]) {
+    fill: var(--ivory) !important;
+  }
+
+  /* Außenkreis angleichen */
+  .social-link[href*="pinterest"] .icon-badge {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
