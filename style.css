@@ -406,3 +406,40 @@ body {
     color: var(--forest);
   }
 }
+/* --- Pinterest reparieren, ohne HTML zu ändern -------------------- */
+
+/* Ziel: gleich wie Instagram, aber Füllung sichtbar */
+
+/* Pinterest-Link anhand der URL erkennen */
+.social-link[href*="pinterest"] svg * {
+  fill: currentColor !important;
+  stroke: none !important;
+}
+
+/* Farbe im Hell/Dunkel-Modus angleichen */
+@media (prefers-color-scheme: light) {
+  .social-link[href*="pinterest"] {
+    color: var(--forest);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .social-link[href*="pinterest"] {
+    color: var(--ivory);
+  }
+}
+
+/* Mobile: Icons etwas größer, Kreis kompakter */
+@media (max-width: 700px) {
+  .social-link .icon-badge {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border-radius: 50%;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+  }
+}
