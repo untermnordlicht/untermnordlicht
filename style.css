@@ -381,3 +381,28 @@ body {
   .social-link svg *[stroke] { stroke: currentColor !important; }
   .social-link svg *[fill]:not([fill="none"]) { fill: transparent !important; }
 }
+/* --- Pinterest an Instagram-Stil anpassen ------------------------------- */
+.social-link[href*="pinterest"] .icon-badge {
+  background: inherit;            /* gleiche Fläche wie Instagram */
+  border: none;                   /* kein zusätzlicher Rand */
+  box-shadow: none;
+}
+
+.social-link[href*="pinterest"] svg * {
+  fill: currentColor !important;  /* gleiche Farbe wie Text/Icon */
+  stroke: none !important;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .social-link[href*="pinterest"] {
+    color: var(--ivory);
+  }
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+  .social-link[href*="pinterest"] {
+    color: var(--forest);
+  }
+}
