@@ -327,3 +327,17 @@ body {
     height: 18px;
   }
 }
+/* --- Dark Mode Fix nur für Mobile: Pinterest Angleichen --- */
+@media (max-width: 700px) {
+  @media (prefers-color-scheme: dark) {
+    .social-link[href*="pinterest"] .icon-badge {
+      background-color: transparent !important; /* heller Kreis weg */
+      border-color: var(--forest);               /* gleiche Linie wie Instagram */
+    }
+
+    .social-link[href*="pinterest"] svg {
+      color: var(--forest);                      /* gleiche Farbe wie Text im Dunkeln */
+      fill: var(--forest);
+    }
+  }
+}
