@@ -512,3 +512,17 @@ body {
   }
 }
 /* === /HOTFIX ======================================================= */
+/* === HOTFIX: Pinterest im Dark Mode ================================= */
+@media (prefers-color-scheme: dark) {
+  /* Nur der Pinterest-Pfad: hellen Fill im Dark Mode transparent machen */
+  .nav-right.socials a[aria-label="Pinterest"] svg path {
+    fill: transparent !important;   /* ivory weg */
+    stroke: var(--forest) !important;
+    stroke-width: 1.8 !important;
+  }
+  /* Kreis bleibt grün – nur zur Sicherheit nochmal gesetzt */
+  .nav-right.socials a[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+}
+/* === /HOTFIX ======================================================== */
