@@ -338,3 +338,46 @@ body {
     font-size: 0.85rem;
   }
 }
+/* --- Mobile-Feinschliff Socials ----------------------------------------- */
+@media (max-width: 700px) {
+  /* Abstand rechte Icon-Gruppe */
+  .nav-right.socials { gap: .35rem; }
+
+  /* Größe der runden Badges (den Kreis kleiner machen) */
+  .social-link .icon-badge {
+    width: 36px;       /* vorher größer – jetzt kompakt, aber gut tippbar */
+    height: 36px;
+    padding: 6px;      /* innerer Abstand zum SVG */
+    border-radius: 9999px;
+    box-shadow: none;
+  }
+
+  /* Icon selbst wieder etwas größer, damit es nicht „verloren“ wirkt */
+  .social-link svg {
+    width: 20px;       /* ggf. 18–22 anpassen, wenn du willst */
+    height: 20px;
+  }
+}
+
+/* Light-Mode: dezenter Kreis */
+@media (max-width: 700px) and (prefers-color-scheme: light) {
+  .social-link .icon-badge {
+    background: rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  /* keine Vollflächen in den SVGs */
+  .social-link svg *[fill]:not([fill="none"]) { fill: transparent; }
+  .social-link svg *[stroke] { stroke: var(--forest); } /* einheitliche Outline */
+}
+
+/* Dark-Mode: Pinterest-Farbe angleichen + dezenter Kreis */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  .social-link .icon-badge {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+  /* alles auf „currentColor“/ivory ziehen, damit Pinterest nicht rausfällt */
+  .social-link { color: var(--ivory); }
+  .social-link svg *[stroke] { stroke: currentColor !important; }
+  .social-link svg *[fill]:not([fill="none"]) { fill: transparent !important; }
+}
