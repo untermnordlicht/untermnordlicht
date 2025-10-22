@@ -468,3 +468,18 @@ body {
     fill: var(--forest) !important;
   }
 }
+/* Pinterest: Standard (hell) und Dark-Mode getrennt steuern */
+.social-link[aria-label="Pinterest"] .p-glyph {
+  color: var(--ivory);              /* Light Mode: innen ivory wie gehabt */
+}
+
+/* Nur Dark Mode: ivory-Füllung transparent, P als grüne Outline */
+@media (prefers-color-scheme: dark) {
+  .social-link[aria-label="Pinterest"] .p-glyph {
+    color: transparent;             /* macht den Fill durchsichtig */
+    stroke: var(--forest);          /* grünes P als Kontur */
+    stroke-width: 1.6;              /* ggf. 1.4–1.8 feinjustieren */
+  }
+  /* Kreis bleibt sicher grün */
+  .social-link[aria-label="Pinterest"] svg circle { fill: var(--forest); }
+}
