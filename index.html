@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>untermnordlicht – Start</title>
 <link rel="stylesheet" href="style.css?=106">
+ <style>
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials a[aria-label="Pinterest"] svg path {
+    fill: transparent !important;     /* ivory-Füllung aus */
+    stroke: var(--forest) !important; /* grünes P als Kontur */
+    stroke-width: 1.8 !important;
+  }
+  .nav-right.socials a[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;   /* Kreis bleibt grün */
+  }
+}
+</style>
 </head>
 <body class="home">
 <a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
