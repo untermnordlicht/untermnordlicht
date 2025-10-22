@@ -456,3 +456,15 @@ body {
     stroke-width: 1.6;
   }
 }
+/* --- Pinterest im Dark Mode: ivory-Fill raus, P grün als Outline --- */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials .social-link[aria-label="Pinterest"] svg path {
+    fill: transparent !important;         /* ivory-Füllung weg */
+    stroke: var(--forest) !important;      /* P in grün */
+    stroke-width: 1.6 !important;          /* ggf. 1.4–1.8 feintunen */
+  }
+  /* Kreis bleibt grün (nur zur Sicherheit explizit) */
+  .nav-right.socials .social-link[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+}
