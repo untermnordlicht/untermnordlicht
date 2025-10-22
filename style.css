@@ -494,3 +494,9 @@ body {
     fill: var(--forest) !important;    /* grüner Kreis bleibt */
   }
 }
+/* Pinterest: im Dark Mode nur den ivory-Fill ausblenden */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials a[aria-label="Pinterest"] svg path[fill="var(--ivory)"] {
+    fill: transparent !important;
+  }
+}
