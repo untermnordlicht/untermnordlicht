@@ -421,3 +421,22 @@ body {
     filter: brightness(0) invert(1) contrast(1.05) !important;
   }
 }
+/* --- Pinterest Dark Mode Fix -------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  /* Grüner Kreis im Darkmode unsichtbar machen */
+  .social-link[href*="pinterest"] svg circle {
+    fill: transparent !important;
+  }
+
+  /* Das "P" bleibt ivory */
+  .social-link[href*="pinterest"] svg path {
+    fill: var(--ivory) !important;
+  }
+
+  /* Optional: Badge-Rand im Dark Mode dezent halten */
+  .social-link[href*="pinterest"] .icon-badge {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: none;
+  }
+}
