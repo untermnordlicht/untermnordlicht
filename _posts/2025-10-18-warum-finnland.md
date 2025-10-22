@@ -1,3 +1,4 @@
+categories: [Nordwärts]
 ---
 layout: post
 title: "Warum Finnland"
