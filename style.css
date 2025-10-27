@@ -536,3 +536,22 @@ body {
     margin: 2rem auto; /* bleibt schön zentriert */
   }
 }
+/* Über-mich-Seite: Bild im richtigen Verhältnis darstellen */
+body.ueber-mich .about-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: auto;           /* Container nicht fix verzerren lassen */
+  max-height: none;
+}
+
+body.ueber-mich .about-hero img {
+  width: auto;            /* Breite an Bildverhältnis anpassen */
+  height: auto;
+  max-width: 90%;         /* nicht über den Bildschirmrand hinaus */
+  max-height: 90vh;       /* maximal 90% der Bildschirmhöhe */
+  object-fit: contain;    /* Bild komplett sichtbar */
+  display: block;
+  margin: 0 auto;
+}
