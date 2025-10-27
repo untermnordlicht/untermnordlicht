@@ -526,3 +526,13 @@ body {
   }
 }
 /* === /HOTFIX ======================================================== */
+/* Nur für Desktop auf der Über-mich-Seite */
+@media (min-width: 1024px) {
+  body.ueber-mich .about-hero img {
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
+    display: block;
+    margin: 2rem auto; /* bleibt schön zentriert */
+  }
+}
