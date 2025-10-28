@@ -4,7 +4,7 @@ title: "Einfach leben - aber echt"
 date: 2025-10-18
 permalink: /blog/einfach-leben-aber-echt/
 image: /assets/blog/2025-10-18-Warum-Finnland/2025-10-28-einfach-leben–aber-echt.jpg
-description: "Gedanken darüber, warum mich der Norden so tief berührt."
+description: Ich mochte das Wort „einfach“ schon immer.
 ---
 
 >Ich mochte das Wort „einfach“ schon immer.
