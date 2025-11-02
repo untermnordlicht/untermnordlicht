@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Das Licht in dem Schatten"
-date: 2025-02-12
+date: 2025-11-02
 permalink: /blog/das-licht-in-dem-schatten/
 image: /assets/blog/2025-10-18-Warum-Finnland/Das-Licht-in-dem-Schatten.jpg
 description: "Das Licht in dem Schatten"
