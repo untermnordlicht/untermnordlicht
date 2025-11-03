@@ -17,8 +17,8 @@
     <div id="menu-panel" class="menu-panel" role="menu">
   <a role="menuitem" href="/" class="active">Startseite</a>
   <a role="menuitem" href="/ueber-uns.html">Über uns</a>
-  <a role="menuitem" href="/blog.html">Blog</a>
   <a role="menuitem" href="/kontakt.html">Kontakt</a>
+  <a role="menuitem" href="/blog.html">Blog</a>
 </div>
   </nav>
   <div class="brand">
@@ -58,25 +58,6 @@
   <main id="inhalt">
     <article class="wrap fade-in" style="max-width:68ch; margin:2rem auto;">
   {{ content }}
-     <!-- Kommentare -->
-<div id="comments" class="comments" data-post="{{ page.url | relative_url }}">
-  <h3>Kommentare</h3>
-  <ul id="comments-list" class="comments-list"></ul>
-
-  <form id="comment-form" class="comment-form">
-    <label for="c-name">Dein Name (optional)</label>
-    <input id="c-name" name="name" maxlength="40" placeholder="Name">
-
-    <label for="c-msg">Kommentar</label>
-    <textarea id="c-msg" name="message" required maxlength="1000" placeholder="Schreibe etwas …"></textarea>
-
-    <!-- Honeypot -->
-    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" hidden>
-
-    <button type="submit">Absenden</button>
-    <p id="comment-hint" class="muted"></p>
-  </form>
-</div>
 </article>
   </main>
 
@@ -88,75 +69,5 @@
   </footer>
 
   <script src="{{ '/script.js' | relative_url }}" defer></script>
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import {
-    getFirestore, collection, addDoc, serverTimestamp,
-    query, orderBy, onSnapshot
-  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
-
-  // >>> HIER DEINE firebaseConfig EINSETZEN (aus der Firebase-Konsole) <<<
-  const firebaseConfig = {
-    apiKey: "…",
-    authDomain: "…",
-    projectId: "…",
-    storageBucket: "…",
-    messagingSenderId: "…",
-    appId: "…"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
-
-  // pro Post eine eigene Sammlung: comments/{slug}/items/*
-  const slug = encodeURIComponent(location.pathname);
-  const col  = collection(db, "comments", slug, "items");
-
-  const list = document.getElementById("comments-list");
-  const form = document.getElementById("comment-form");
-  const hint = document.getElementById("comment-hint");
-
-  // Live laden
-  const q = query(col, orderBy("createdAt", "asc"));
-  onSnapshot(q, (snap) => {
-    list.innerHTML = "";
-    if (snap.empty) { list.innerHTML = "<li>Noch keine Kommentare.</li>"; return; }
-    snap.forEach(doc => {
-      const c = doc.data();
-      const t = c.createdAt?.toDate ? c.createdAt.toDate() : new Date();
-      const li = document.createElement("li");
-      li.innerHTML = 
-        <strong>${escapeHtml(c.name || "Gast")}</strong><br>
-        <p>${escapeHtml(c.message || "")}</p>
-        <small>${t.toLocaleDateString("de-DE")} ${t.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</small>
-      ;
-      list.appendChild(li);
-    });
-  });
-
-  // Absenden
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (form.website && form.website.value) return; // Honeypot
-    const name = (form.name?.value  "").trim().slice(0,40)  "Gast";
-    const msg  = (form.message?.value || "").trim();
-    if (!msg) { hint.textContent = "Bitte eine Nachricht schreiben."; return; }
-
-    const btn = form.querySelector("button[type=submit]");
-    btn.disabled = true; hint.textContent = "Sende …";
-    try {
-      await addDoc(col, { name, message: msg, createdAt: serverTimestamp() });
-      form.reset(); hint.textContent = "Danke! Dein Kommentar ist sichtbar.";
-    } catch (err) {
-      hint.textContent = "Fehler: " + err.message;
-    } finally {
-      btn.disabled = false;
-    }
-  });
-
-  function escapeHtml(s){
-    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
-</script>
 </body>
 </html>
