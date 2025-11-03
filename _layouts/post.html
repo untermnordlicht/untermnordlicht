@@ -58,9 +58,9 @@
   <main id="inhalt">
     <article class="wrap fade-in" style="max-width:68ch; margin:2rem auto;">
   {{ content }}
-      <div id="comments" class="comments">
+     <!-- Kommentare -->
+<div id="comments" class="comments" data-post="{{ page.url | relative_url }}">
   <h3>Kommentare</h3>
-
   <ul id="comments-list" class="comments-list"></ul>
 
   <form id="comment-form" class="comment-form">
@@ -68,10 +68,10 @@
     <input id="c-name" name="name" maxlength="40" placeholder="Name">
 
     <label for="c-msg">Kommentar</label>
-    <textarea id="c-msg" name="message" required maxlength="1000" placeholder="Schreib etwas …"></textarea>
+    <textarea id="c-msg" name="message" required maxlength="1000" placeholder="Schreibe etwas …"></textarea>
 
-    <!-- Honeypot gegen Bots -->
-    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <!-- Honeypot -->
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" hidden>
 
     <button type="submit">Absenden</button>
     <p id="comment-hint" class="muted"></p>
@@ -95,72 +95,67 @@
     query, orderBy, onSnapshot
   } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-  // 🔧 DEINE Firebase-Konfiguration
+  // >>> HIER DEINE firebaseConfig EINSETZEN (aus der Firebase-Konsole) <<<
   const firebaseConfig = {
-  apiKey: "AIzaSyAWg0dUyyRdY6VSv_XI6X57nL82Qt6ERlc",
-  authDomain: "untermnordlicht-1684b.firebaseapp.com",
-  projectId: "untermnordlicht-1684b",
-  storageBucket: "untermnordlicht-1684b.firebasestorage.app",
-  messagingSenderId: "516507307657",
-  appId: "1:516507307657:web:e3a9a60e4e072849b04058"
-};
+    apiKey: "…",
+    authDomain: "…",
+    projectId: "…",
+    storageBucket: "…",
+    messagingSenderId: "…",
+    appId: "…"
+  };
 
-  // Init
   const app = initializeApp(firebaseConfig);
   const db  = getFirestore(app);
 
-  // Eindeutiger Pfad pro Post (URL als Schlüssel)
+  // pro Post eine eigene Sammlung: comments/{slug}/items/*
   const slug = encodeURIComponent(location.pathname);
-  const commentsCol = collection(db, "comments", slug, "items");
+  const col  = collection(db, "comments", slug, "items");
 
-  // DOM-Elemente
-  const listEl  = document.getElementById("comments-list");
-  const formEl  = document.getElementById("comment-form");
-  const hintEl  = document.getElementById("comment-hint");
+  const list = document.getElementById("comments-list");
+  const form = document.getElementById("comment-form");
+  const hint = document.getElementById("comment-hint");
 
-  // Kommentare live anzeigen
-  const q = query(commentsCol, orderBy("created", "asc"));
+  // Live laden
+  const q = query(col, orderBy("createdAt", "asc"));
   onSnapshot(q, (snap) => {
-    listEl.innerHTML = "";
+    list.innerHTML = "";
+    if (snap.empty) { list.innerHTML = "<li>Noch keine Kommentare.</li>"; return; }
     snap.forEach(doc => {
-      const d = doc.data();
+      const c = doc.data();
+      const t = c.createdAt?.toDate ? c.createdAt.toDate() : new Date();
       const li = document.createElement("li");
       li.innerHTML = 
-        <strong>${(d.name || "Gast")}</strong><br>
-        <p>${escapeHtml(d.message || "")}</p>
-        <small>${d.created?.toDate ? d.created.toDate().toLocaleString("de-DE") : ""}</small>
+        <strong>${escapeHtml(c.name || "Gast")}</strong><br>
+        <p>${escapeHtml(c.message || "")}</p>
+        <small>${t.toLocaleDateString("de-DE")} ${t.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</small>
       ;
-      listEl.appendChild(li);
+      list.appendChild(li);
     });
   });
 
   // Absenden
-  formEl.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // Honeypot: wenn ausgefüllt, ignorieren
-    if (formEl.website && formEl.website.value) return;
+    if (form.website && form.website.value) return; // Honeypot
+    const name = (form.name?.value  "").trim().slice(0,40)  "Gast";
+    const msg  = (form.message?.value || "").trim();
+    if (!msg) { hint.textContent = "Bitte eine Nachricht schreiben."; return; }
 
-    const name = (formEl.name?.value || "").trim();
-    const message = (formEl.message?.value || "").trim();
-    if (!message) { hintEl.textContent = "Bitte eine Nachricht schreiben."; return; }
-
-    const btn = formEl.querySelector("button[type=submit]");
-    btn.disabled = true;
-    hintEl.textContent = "Sende …";
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true; hint.textContent = "Sende …";
     try {
-      await addDoc(commentsCol, { name, message, created: serverTimestamp() });
-      formEl.reset();
-      hintEl.textContent = "Danke! Dein Kommentar ist sichtbar.";
+      await addDoc(col, { name, message: msg, createdAt: serverTimestamp() });
+      form.reset(); hint.textContent = "Danke! Dein Kommentar ist sichtbar.";
     } catch (err) {
-      hintEl.textContent = "Fehler: " + err.message;
+      hint.textContent = "Fehler: " + err.message;
     } finally {
       btn.disabled = false;
     }
   });
 
-  // XSS-Schutz
-  function escapeHtml(str) {
-    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
 </script>
 </body>
