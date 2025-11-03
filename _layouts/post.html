@@ -58,6 +58,25 @@
   <main id="inhalt">
     <article class="wrap fade-in" style="max-width:68ch; margin:2rem auto;">
   {{ content }}
+      <div id="comments" class="comments">
+  <h3>Kommentare</h3>
+
+  <ul id="comments-list" class="comments-list"></ul>
+
+  <form id="comment-form" class="comment-form">
+    <label for="c-name">Dein Name (optional)</label>
+    <input id="c-name" name="name" maxlength="40" placeholder="Name">
+
+    <label for="c-msg">Kommentar</label>
+    <textarea id="c-msg" name="message" required maxlength="1000" placeholder="Schreib etwas …"></textarea>
+
+    <!-- Honeypot gegen Bots -->
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button type="submit">Absenden</button>
+    <p id="comment-hint" class="muted"></p>
+  </form>
+</div>
 </article>
   </main>
 
@@ -70,23 +89,79 @@
 
   <script src="{{ '/script.js' | relative_url }}" defer></script>
   <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import {
+    getFirestore, collection, addDoc, serverTimestamp,
+    query, orderBy, onSnapshot
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
+  // 🔧 DEINE Firebase-Konfiguration
   const firebaseConfig = {
-    apiKey: "AIzaSyAWg0dUyyRdY6VSv_XI6X57nL82Qt6ERlc",
+    apiKey: "AIzaSyAwEg0uyyRdY6VSv_XI6X57nLB2Qt6ER1c",
     authDomain: "untermnordlicht-1684b.firebaseapp.com",
     projectId: "untermnordlicht-1684b",
-    storageBucket: "untermnordlicht-1684b.firebasestorage.app",
+    storageBucket: "untermnordlicht-1684b.appspot.com",
     messagingSenderId: "516507307657",
-    appId: "1:516507307657:web:e3a9a60e4e072849b04058"
+    appId: "1:516507307657:web:e39a060e4e072849b04058"
   };
 
-  // Initialize Firebase
+  // Init
   const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  // Eindeutiger Pfad pro Post (URL als Schlüssel)
+  const slug = encodeURIComponent(location.pathname);
+  const commentsCol = collection(db, "comments", slug, "items");
+
+  // DOM-Elemente
+  const listEl  = document.getElementById("comments-list");
+  const formEl  = document.getElementById("comment-form");
+  const hintEl  = document.getElementById("comment-hint");
+
+  // Kommentare live anzeigen
+  const q = query(commentsCol, orderBy("created", "asc"));
+  onSnapshot(q, (snap) => {
+    listEl.innerHTML = "";
+    snap.forEach(doc => {
+      const d = doc.data();
+      const li = document.createElement("li");
+      li.innerHTML = 
+        <strong>${(d.name || "Gast")}</strong><br>
+        <p>${escapeHtml(d.message || "")}</p>
+        <small>${d.created?.toDate ? d.created.toDate().toLocaleString("de-DE") : ""}</small>
+      ;
+      listEl.appendChild(li);
+    });
+  });
+
+  // Absenden
+  formEl.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    // Honeypot: wenn ausgefüllt, ignorieren
+    if (formEl.website && formEl.website.value) return;
+
+    const name = (formEl.name?.value || "").trim();
+    const message = (formEl.message?.value || "").trim();
+    if (!message) { hintEl.textContent = "Bitte eine Nachricht schreiben."; return; }
+
+    const btn = formEl.querySelector("button[type=submit]");
+    btn.disabled = true;
+    hintEl.textContent = "Sende …";
+    try {
+      await addDoc(commentsCol, { name, message, created: serverTimestamp() });
+      formEl.reset();
+      hintEl.textContent = "Danke! Dein Kommentar ist sichtbar.";
+    } catch (err) {
+      hintEl.textContent = "Fehler: " + err.message;
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  // XSS-Schutz
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
 </script>
 </body>
 </html>
