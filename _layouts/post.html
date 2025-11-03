@@ -69,5 +69,24 @@
   </footer>
 
   <script src="{{ '/script.js' | relative_url }}" defer></script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAWg0dUyyRdY6VSv_XI6X57nL82Qt6ERlc",
+    authDomain: "untermnordlicht-1684b.firebaseapp.com",
+    projectId: "untermnordlicht-1684b",
+    storageBucket: "untermnordlicht-1684b.firebasestorage.app",
+    messagingSenderId: "516507307657",
+    appId: "1:516507307657:web:e3a9a60e4e072849b04058"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
