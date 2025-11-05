@@ -72,11 +72,17 @@ Vielleicht ist der Wald gar kein Ort, sondern ein Gefühl. Ein leises Flüstern,
 </p>
 
 <script>
-fetch('https://api.countapi.xyz/hit/untermnordlicht/das-fluestern-im-wald')
+// Zähler anzeigen (ohne zu erhöhen)
+fetch('https://api.countapi.xyz/get/untermnordlicht/das-fluestern-im-wald')
   .then(res => res.json())
   .then(res => {
-    document.getElementById('book-count').textContent = res.value;
+    document.getElementById('book-count').textContent = res.value || 0;
   });
+
+// Wenn jemand auf den PDF-Link klickt → Zähler erhöhen
+document.getElementById('pdf-link').addEventListener('click', () => {
+  fetch('https://api.countapi.xyz/hit/untermnordlicht/das-fluestern-im-wald');
+});
 </script>
           </div>
         </a>
@@ -95,6 +101,7 @@ fetch('https://api.countapi.xyz/hit/untermnordlicht/das-fluestern-im-wald')
 </body>
 
 </html>
+
 
 
 
