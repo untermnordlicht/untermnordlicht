@@ -66,6 +66,18 @@
 </p>Inspiriert von der Musik von The Rasmus – von dieser stillen Melancholie zwischen Dunkelheit und Hoffnung, wenn beides gleichzeitig wahr sein darf.
 Vielleicht ist der Wald gar kein Ort, sondern ein Gefühl. Ein leises Flüstern, das sagt: Du bist da.</p>
             <p style="margin-top:1rem;"><span class="button" style="padding:.6rem 1rem; border-radius:.6rem; background:var(--forest); color:var(--ivory); display:inline-block;">PDF lesen</span></p>
+           <!-- Download-Zähler -->
+<p style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+  Downloads bisher: <span id="book-count">0</span>
+</p>
+
+<script>
+fetch('https://api.countapi.xyz/hit/untermnordlicht/das-fluestern-im-wald')
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('book-count').textContent = res.value;
+  });
+</script>
           </div>
         </a>
       </article>
@@ -83,6 +95,7 @@ Vielleicht ist der Wald gar kein Ort, sondern ein Gefühl. Ein leises Flüstern,
 </body>
 
 </html>
+
 
 
 
