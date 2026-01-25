@@ -37,18 +37,32 @@
   </div>
 </header>
 <main id="inhalt">
-  <section class="hero" style="--hero:url('https://raw.githubusercontent.com/untermnordlicht/untermnordlicht/main/hero.jpg')">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h2 class="hero-title">Tervetuloa</h2>
-      <p class="hero-sub">Willkommen</p>
-    </div>
-  </section>
+  <section class="wrap" style="max-width:1000px; margin:2rem auto 1rem;">
+  <img src="/assets/her02.jpg" alt="untermnordlicht" style="width:100%; height:auto; border-radius:12px; display:block;">
+</section>
 
-  <section class="wrap">
-    
-    <p>Ein Leben zwischen Wald, Licht und Stille – inspiriert vom Norden.</p>
-  </section>
+
+  <section class="wrap" style="max-width:1000px; margin:0 auto 2.5rem; text-align:left;">
+  <p><strong>untermnordlicht</strong><br>einfach leben, tief fühlen</p>
+
+  <p>
+    Schreiben ist für mich ein stiller Rückweg zu mir selbst.
+    Ein Blick auf das, was im Alltag oft übersehen wird:
+    Schatten, Lichtkanten, Zwischentöne.
+    Meine Texte entstehen nicht aus Erklärung,
+    sondern aus Atmosphäre.
+    Leise. Klar. Wahr.
+  </p>
+
+  <h2 style="margin-top:1.8rem;">Manuskript &amp; Zusammenarbeit</h2>
+  <p>
+    Ich arbeite an literarischen Projekten im Bereich
+    poetische Prosa, stille Erzählformen und atmosphärisches Schreiben.
+    Anfragen zu Manuskripten oder Zusammenarbeit gerne per Mail:<br>
+    📩 <a href="mailto:hei@untermnordlicht.de">hei@untermnordlicht.de</a>
+  </p>
+</section>
+
 </main>
 <footer class="wrap footer small">
   <div class="container">
@@ -56,40 +70,7 @@
     <span class="version">v1.0.6</span>
   </div>
 </footer>
-<script src="script.js"></script>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="/script.js"></script>
 
-<script id="__enhance_v097__">
-// Menü-Toggle (progressive; nutzt vorhandene Klassen/IDs falls vorhanden)
-(function(){
-  var btn = document.querySelector('.menu-toggle');
-  var nav = document.getElementById('hauptmenue');
-  if (btn && nav) {
-    btn.addEventListener('click', function(){
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      btn.setAttribute('aria-label', open ? 'Menü öffnen' : 'Menü schließen');
-      nav.hidden = open;
-    });
-  }
-})();
-// Aktiver Link
-(function(){
-  var links = document.querySelectorAll('#hauptmenue a[href]');
-  links.forEach ? links.forEach(function(a){ if (a.href === location.href) a.setAttribute('aria-current','page'); }) : null;
-})();
-// Sanftes Einblenden (respektiert reduzierte Bewegung)
-(function(){
-  try{
-    if (matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-      var els = document.querySelectorAll('.fade-in');
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('is-visible'); });
-      }, { rootMargin: '12% 0px' });
-      els.forEach ? els.forEach(function(el){ io.observe(el); }) : null;
-    }
-  }catch(e){}
-})();
-</script>
 </body>
 </html>
