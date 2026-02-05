@@ -571,3 +571,27 @@ body.ueber-mich .about-hero img {
 .nav-left{ justify-self: start !important; }
 .brand{ justify-self: center !important; text-align: center !important; }
 .nav-right{ justify-self: end !important; }
+
+/* === Header fixed oben + Brand mittig (Override) === */
+:root{ --topbar-h: 64px; }
+
+.topbar{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: var(--topbar-h) !important;
+  z-index: 9999 !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+
+  background: #f8f5ef !important;
+}
+
+body{ padding-top: var(--topbar-h) !important; }
+
+.nav-left{ justify-self: start !important; }
+.brand{ justify-self: center !important; text-align: center !important; }
+.nav-right{ justify-self: end !important; }
