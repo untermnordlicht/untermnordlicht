@@ -255,3 +255,303 @@ img { max-width: 100%; height: auto; }
   text-align: center;
   margin-inline: auto;
 }
+/* post-seiten: header sicher über dem hero */
+.topbar{ z-index: 10; }
+/* Blog-Post: Topbar sicher über dem Hero */
+.topbar { position: relative; z-index: 20; }
+
+/* Falls nötig: Overlay unter Text halten */
+.hero-overlay { z-index: 0; }
+.hero-content { z-index: 1; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; }
+/* Blog-Post: Topbar sicher über dem Hero */
+.topbar { position: relative; z-index: 20; }
+.hero-overlay { z-index: 0; }
+.hero-content {
+  z-index: 1;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+/* --- Sichtbarkeitsfix für Blogposts --- */
+article.wrap {
+  position: relative !important;
+  z-index: 5 !important;
+  color: var(--forest, #111) !important;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero-overlay {
+  z-index: 0 !important;
+  opacity: 0.4 !important; /* sanfter, aber nicht alles verdecken */
+}
+/* --- Einheitliche, fixierte Topbar für alle Seiten --- */
+:root { --topbar-h: 64px; }
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-h);
+  z-index: 100;
+  background: #f8f5ef; /* dein elfenbeinweiß, wie Startseite */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+body {
+  padding-top: var(--topbar-h); /* Platz schaffen, damit nix verdeckt wird */
+}
+/* --- Mobile: Social-Icons kleiner & enger -------------------------------- */
+@media (max-width: 700px) {
+  .nav-right.socials {
+    gap: .28rem; /* enger zusammen */
+  }
+
+  .social-link .icon-badge {
+    width: 32px;        /* kleinerer Kreis */
+    height: 32px;
+    padding: 4px;       /* weniger Innenabstand */
+    border-radius: 9999px;
+    border-width: 1px;  /* dünnere Umrandung */
+  }
+
+  .social-link svg {
+    width: 18px;        /* Icon leicht kleiner */
+    height: 18px;
+  }
+}
+/* --- Dark Mode Fix nur für Mobile: Pinterest Angleichen --- */
+@media (max-width: 700px) {
+  @media (prefers-color-scheme: dark) {
+    .social-link[href*="pinterest"] .icon-badge {
+      background-color: transparent !important; /* heller Kreis weg */
+      border-color: var(--forest);               /* gleiche Linie wie Instagram */
+    }
+
+    .social-link[href*="pinterest"] svg {
+      color: var(--forest);                      /* gleiche Farbe wie Text im Dunkeln */
+      fill: var(--forest);
+    }
+  }
+}
+/* --- Mobile + Dark Mode: Pinterest wie Instagram (ohne hellen Innenkreis) --- */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  /* Badge/Kreis hinten: transparent und dezenter Rand */
+  .nav-right.socials a[href*="pinterest"] .icon-badge {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: none !important;
+  }
+
+  /* Alle Teile des SVG: kein Fill, nur Outline in ivory */
+  .nav-right.socials a[href*="pinterest"] svg * {
+    fill: none !important;
+    stroke: var(--ivory) !important;
+    stroke-width: 1.6 !important;
+  }
+
+  /* Falls das SVG einen extra Kreis legt – explizit rausnehmen */
+  .nav-right.socials a[href*="pinterest"] svg circle,
+  .nav-right.socials a[href*="pinterest"] svg path[fill] {
+    fill: none !important;
+  }
+}
+/* --- Mobile + Dark Mode: Pinterest Icon fixen --- */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  /* Hintergrund vom Kreis transparent machen */
+  .social-link[href*="pinterest"] svg circle,
+  .social-link[href*="pinterest"] svg path[fill],
+  .social-link[href*="pinterest"] svg [fill="var(--ivory)"],
+  .social-link[href*="pinterest"] svg [fill="#EBE7DC"] {
+    fill: transparent !important;
+  }
+
+  /* Das P selbst soll in ivory bleiben */
+  .social-link[href*="pinterest"] svg path:not([fill="none"]) {
+    fill: var(--ivory) !important;
+  }
+
+  /* Außenkreis angleichen */
+  .social-link[href*="pinterest"] .icon-badge {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+/* --- Mobile + Dark Mode: Pinterest-Innenkreis weg, nur das "P" sichtbar --- */
+@media (max-width: 700px) and (prefers-color-scheme: dark) {
+  /* 1) Helle Kreis-/Flächen-Hintergründe ausblenden */
+  .social-link[href*="pinterest"] svg circle,
+  .social-link[href*="pinterest"] svg ellipse,
+  .social-link[href*="pinterest"] svg > path:first-of-type {
+    display: none !important;       /* erwischt den runden Hintergrund */
+  }
+
+  /* 2) Badge-Hintergrund transparent lassen */
+  .social-link[href*="pinterest"] .icon-badge {
+    background: transparent !important;
+    border-color: rgba(255,255,255,.10) !important;
+    box-shadow: none !important;
+  }
+
+  /* 3) Alles andere als Outline, das "P" gefüllt */
+  .social-link[href*="pinterest"] svg * {
+    fill: none !important;
+    stroke: var(--ivory) !important;
+    stroke-width: 1.6 !important;
+  }
+  .social-link[href*="pinterest"] svg path:last-of-type {
+    fill: var(--ivory) !important;  /* das "P" selbst */
+    stroke: none !important;
+  }
+}
+/* --- Pinterest Dark Mode Fix (Mobile + Desktop) --- */
+@media (prefers-color-scheme: dark) {
+  /* Kein heller Kreis im Hintergrund */
+  .social-link[href*="pinterest"] .icon-badge {
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    filter: brightness(0) invert(1) contrast(1.05) !important;
+  }
+}
+/* --- Pinterest Dark Mode Fix -------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  /* Grüner Kreis im Darkmode unsichtbar machen */
+  .social-link[href*="pinterest"] svg circle {
+    fill: transparent !important;
+  }
+
+  /* Das "P" bleibt ivory */
+  .social-link[href*="pinterest"] svg path {
+    fill: var(--ivory) !important;
+  }
+
+  /* Optional: Badge-Rand im Dark Mode dezent halten */
+  .social-link[href*="pinterest"] .icon-badge {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: none;
+  }
+}
+/* --- Pinterest Dark Mode: ivory-Fill transparent machen --- */
+@media (prefers-color-scheme: dark) {
+  /* Nur der innere ivory-Fill wird transparent */
+  .social-link[href*="pinterest"] svg path[fill="var(--ivory)"] {
+    fill: transparent !important;
+  }
+
+  /* Kreis und grünes P bleiben wie im Light Mode */
+  .social-link[href*="pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+  .social-link[href*="pinterest"] svg path {
+    stroke: var(--forest) !important;
+    stroke-width: 1.6;
+  }
+}
+/* --- Pinterest im Dark Mode: ivory-Fill raus, P grün als Outline --- */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials .social-link[aria-label="Pinterest"] svg path {
+    fill: transparent !important;         /* ivory-Füllung weg */
+    stroke: var(--forest) !important;      /* P in grün */
+    stroke-width: 1.6 !important;          /* ggf. 1.4–1.8 feintunen */
+  }
+  /* Kreis bleibt grün (nur zur Sicherheit explizit) */
+  .nav-right.socials .social-link[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+}
+/* Pinterest: Standard (hell) und Dark-Mode getrennt steuern */
+.social-link[aria-label="Pinterest"] .p-glyph {
+  color: var(--ivory);              /* Light Mode: innen ivory wie gehabt */
+}
+
+/* Nur Dark Mode: ivory-Füllung transparent, P als grüne Outline */
+@media (prefers-color-scheme: dark) {
+  .social-link[aria-label="Pinterest"] .p-glyph {
+    color: transparent;             /* macht den Fill durchsichtig */
+    stroke: var(--forest);          /* grünes P als Kontur */
+    stroke-width: 1.6;              /* ggf. 1.4–1.8 feinjustieren */
+  }
+  /* Kreis bleibt sicher grün */
+  .social-link[aria-label="Pinterest"] svg circle { fill: var(--forest); }
+}
+/* --- Pinterest: nur Dark Mode, ivory-Füllung weg, P bleibt grün --- */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials a[aria-label="Pinterest"] svg path {
+    fill: transparent !important;     /* ivory-Füllung aus */
+    stroke: var(--forest) !important; /* P als grüne Outline */
+    stroke-width: 1.8 !important;
+  }
+  .nav-right.socials a[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;    /* grüner Kreis bleibt */
+  }
+}
+/* Pinterest: im Dark Mode nur den ivory-Fill ausblenden */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials a[aria-label="Pinterest"] svg path[fill="var(--ivory)"] {
+    fill: transparent !important;
+  }
+}
+/* === HOTFIX: Pinterest im Dark Mode ================================ */
+@media (prefers-color-scheme: dark) {
+  .nav-right.socials a[aria-label="Pinterest"] svg path {
+    fill: transparent !important;     /* ivory-Füllung raus */
+    stroke: var(--forest) !important; /* grünes P als Kontur */
+    stroke-width: 1.8 !important;
+  }
+  .nav-right.socials a[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;   /* Kreis bleibt grün */
+  }
+}
+/* === /HOTFIX ======================================================= */
+/* === HOTFIX: Pinterest im Dark Mode ================================= */
+@media (prefers-color-scheme: dark) {
+  /* Nur der Pinterest-Pfad: hellen Fill im Dark Mode transparent machen */
+  .nav-right.socials a[aria-label="Pinterest"] svg path {
+    fill: transparent !important;   /* ivory weg */
+    stroke: var(--forest) !important;
+    stroke-width: 1.8 !important;
+  }
+  /* Kreis bleibt grün – nur zur Sicherheit nochmal gesetzt */
+  .nav-right.socials a[aria-label="Pinterest"] svg circle {
+    fill: var(--forest) !important;
+  }
+}
+/* === /HOTFIX ======================================================== */
+/* Nur für Desktop auf der Über-mich-Seite */
+@media (min-width: 1024px) {
+  body.ueber-mich .about-hero img {
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
+    display: block;
+    margin: 2rem auto; /* bleibt schön zentriert */
+  }
+}
+/* Über-mich-Seite: Bild im richtigen Verhältnis darstellen */
+body.ueber-mich .about-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: auto;           /* Container nicht fix verzerren lassen */
+  max-height: none;
+}
+
+body.ueber-mich .about-hero img {
+  width: auto;            /* Breite an Bildverhältnis anpassen */
+  height: auto;
+  max-width: 90%;         /* nicht über den Bildschirmrand hinaus */
+  max-height: 90vh;       /* maximal 90% der Bildschirmhöhe */
+  object-fit: contain;    /* Bild komplett sichtbar */
+  display: block;
+  margin: 0 auto;
+}
