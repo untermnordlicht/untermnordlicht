@@ -555,3 +555,19 @@ body.ueber-mich .about-hero img {
   display: block;
   margin: 0 auto;
 }
+/* === Header wieder fest oben + Brand mittig (Override) === */
+.topbar{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+
+  background: #f8f5ef !important; /* falls du eine Variable hast, kannst du die hier nutzen */
+}
+
+.nav-left{ justify-self: start !important; }
+.brand{ justify-self: center !important; text-align: center !important; }
+.nav-right{ justify-self: end !important; }
