@@ -569,3 +569,12 @@ body.ueber-mich .about-hero img {
   justify-self: center; /* sitzt exakt mittig */
   text-align: center;   /* Text auch mittig */
 }
+
+.topbar { position: relative; }
+
+.brand-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
